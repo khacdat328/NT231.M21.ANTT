@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>UIT Bank</title>
+  <link rel="icon" href="../img/l.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/response.css">
+  <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+  <div class="topnav" id="myTopnav">
+    <img src="../img/lg.png" height="44" width="204.8">
+    <a href="../index.html" class="active"><i class="fa fa-fw fa-home "></i>Home</a>
+    <a href="../register/register.php" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Sign Up</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <br><br>
+  <div style="text-align: center;">
+    <div style="background-color: #4CAF50; height: 45px; width: 100%; align-items: center; color: white; ">
+      <h1>Login</h1>
+    </div>
+    <br><br>
+    <hr class="colorgraph">
+    <form action="../db/login.php" method="post" class="login-form">
+      <input type="text" name="id" class="question" id="id" required autocomplete="off" />
+      <label for="id">
+        <span style="font-size: 20px;">User ID</span>
+      </label>
+
+      <input type="password" name="password" class="question" id="password" required autocomplete="off" />
+      <label for="password">
+        <span style="font-size: 20px;">Password</span>
+      </label>
+      <input type="submit" name="submit" class="submit-btn" value="Submit">
+      <a href="../register/new_register.html" class="register-link" onmouseover="this.style.color = 'red'" onmouseleave="this.style.color = 'blue'">
+        New User? Register here!
+      </a>
+      
+    </form>
+    <hr class="colorgraph">
+  </div>
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+    </script>
+</body>
+
+</html>
+<!-- <table cellspacing="25" style="align-items: center;">
+  <col width="100%">
+    <tr>
+      <td>
+        <input type="text" name="id" class="question" id="id" required autocomplete="off" />
+        <label for="id"><span>User ID</span></label>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <input type="password" name="password" class="question" id="password" required autocomplete="off" />
+        <label for="password"><span>Password</span></label>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <a href="../register/register.php"
+          style="color: blue" onmouseover="this.style.color = 'red'" onmouseleave="this.style.color = 'blue'">
+          New User? Register here!
+        </a>
+      </td>
+    </tr>
+</table> -->
+<!-- <br> -->
