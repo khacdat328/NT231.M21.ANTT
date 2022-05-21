@@ -14,36 +14,42 @@
   <div class="topnav" id="myTopnav">
     <img src="../img/lg.png" height="44" width="204.8">
     <a href="../index.html" class="active"><i class="fa fa-fw fa-home "></i>Home</a>
-    <a href="../register/new_register.html" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Sign Up</a>
+    <a href="../register/register.php" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Sign Up</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
   </div>
 
   <div class="login form-body">
-    <div class="login form-content">
-      <div class="login form-title">
-        <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
-        <h2>UIT Bank</h2>
+    <div class="login grid-column form-background">
+      <div>
+        <img src="../asset/img/Logo_UIT_Web_Transparent.png" alt="" height="400">
       </div>
+    </div>
 
-      <form action="../db/login.php" method="post" class="login form-section">
-        <input type="text" name="id" class="question" id="id" required autocomplete="off" />
-        <label for="id">
-          <span style="font-size: 20px;">User ID</span>
-        </label>
+    <div class="grid-column form-container login">
+      <div class="login form-content">
+        <div class="login form-title">
+          <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
+          <h2>UIT Bank</h2>
+        </div>
 
-        <input type="password" name="password" class="question" id="password" required autocomplete="off" />
-        <label for="password">
-          <span style="font-size: 20px;">Password</span>
-        </label>
-        <input type="submit" name="submit" class="submit-btn" value="Submit">
-        <a href="../register/new_register.html" class="register-link" onmouseover="this.style.color = 'red'"
-          onmouseleave="this.style.color = 'blue'">
-          New User? Register here!
-        </a>
+        <form action="../db/login.php" method="post" class="login form-section">
+          <div class="login input-container">
+            <input type="text" name="id" class="question" id="id" placeholder="User ID" required autocomplete="off" />
+          </div>
 
-      </form>
+          <div class="login input-container">
+            <input type="password" name="password" class="question" id="password" placeholder="password" required autocomplete="off" />
+          </div>
+          <input type="submit" name="submit" class="form-submit" value="Submit">
+          <a href="../register/register.php" class="register-link" onmouseover="this.style.color = 'red'"
+            onmouseleave="this.style.color = 'blue'">
+            New User? Register here!
+          </a>
+          <a href="#" class="recover-password" onmouseleave="this.style.color = 'blue'" onmouseover="this.style.color = 'red'">Forget your password?</a>
+        </form>
+      </div>
     </div>
   </div>
 

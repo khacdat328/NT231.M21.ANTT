@@ -29,13 +29,35 @@ select {
 /* ------------------------------------------------ */
 /* --------------------------------------- */
 /* LOGIN */
-.login-form{
-  padding: 10px 20px;
-  width:60%; 
-  max-width: 400px;
-  margin: 0 auto;
-  border-radius: 10px;
-  border: 1px solid red;
+
+.login.form-body{
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.login.form-background{
+  background-color: white; 
+  opacity: 0.9  ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login.grid-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login.form-container{
+  position: relative;
+}
+.login.form-content{
+  max-width: 300px;
+  /* height: 500px; */
+}
+
+.login.form-title{
+  grid-template-columns: 10% 60%;
 }
 
 .submit-btn{
@@ -49,18 +71,38 @@ select {
   margin: 0 auto;
 }
 
-
-
+.recover-password,
 .register-link{
   display: block;
   color: blue;
-  font-size: 10px;
+  font-size: 12px;
   font-style:italic;
   text-align: end;
   position: relative;
   right: 0;
+  text-decoration: none;
+  padding: 2px 0 0;
 }
 
+.login.form-section label{
+  align-content: center;
+}
+
+.login input.question{
+  /* border: none; */
+  border-radius: 100px;
+  padding: 5px 20px;
+  margin: 5px 0;
+}
+
+
+.login label > span{
+  display: none;
+}
+
+.login input.question:focus {
+  padding: 5px 20px;
+}
 /* LOGIN */
 /* --------------------------------------- */
 /* ------------------------------------------------ */
@@ -197,9 +239,6 @@ background: linear-gradient(45deg, rgba(67,173,227,1) 0%, rgba(60,148,181,0.6250
   /* box-shadow: 3px 3px 1px 0 black; */
 }
 
-.register1-submit:active{
-  
-}
 
 
 /* REGISTER1 */
@@ -271,6 +310,7 @@ input[type=date]:focus::-webkit-datetime-edit {
   min-height: 57px;
   padding: 20px 5px 5px ;
 }
+
 .register2.form-submit{
   margin: 0 auto 5px;
 }
