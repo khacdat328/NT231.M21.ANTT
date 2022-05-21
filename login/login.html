@@ -8,12 +8,71 @@
 <link rel="stylesheet" href="../css/response.css">
 <link rel="stylesheet" href="../css/style.css">
 
-<script>
-var filter_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-var filter_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#\$%\^&\*]).{8,}$/;
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
+</head>
+
+<body>
+  <div class="topnav" id="myTopnav">
+    <img src="../img/lg.png" height="44" width="204.8">
+    <a href="../index.html" class="active"><i class="fa fa-fw fa-home "></i>Home</a>
+    <a href="../register/new_register.html" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Sign Up</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  
+  <div class="login form-body">
+    <div class="login form-content">
+      <div class="login form-tittle">
+        <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
+        <h2>UIT Bank</h2>
+      </div>
+      <form action="../db/login.php" method="post" class="login form-section">
+        <input type="text" name="id" class="question" id="id" required autocomplete="off" />
+        <label for="id">
+          <span style="font-size: 20px;">User ID</span>
+        </label>
+  
+        <input type="password" name="password" class="question" id="password" required autocomplete="off" />
+        <label for="password">
+          <span style="font-size: 20px;">Password</span>
+        </label>
+        <input type="submit" name="submit" class="submit-btn" value="Submit">
+        <a href="../register/new_register.html" class="register-link" onmouseover="this.style.color = 'red'" onmouseleave="this.style.color = 'blue'">
+          New User? Register here!
+        </a>
+        
+      </form>
+    </div>
+  </div>
+  <!-- <div style="text-align: center;">
+    <div style="background-color: #4CAF50; height: 45px; width: 100%; align-items: center; color: white; ">
+      <h1>Login</h1>
+    </div>
+    <br><br>
+    <hr class="colorgraph">
+    <form action="../db/login.php" method="post" class="login form">
+      <input type="text" name="id" class="question" id="id" required autocomplete="off" />
+      <label for="id">
+        <span style="font-size: 20px;">User ID</span>
+      </label>
+
+      <input type="password" name="password" class="question" id="password" required autocomplete="off" />
+      <label for="password">
+        <span style="font-size: 20px;">Password</span>
+      </label>
+      <input type="submit" name="submit" class="submit-btn" value="Submit">
+      <a href="../register/new_register.html" class="register-link" onmouseover="this.style.color = 'red'" onmouseleave="this.style.color = 'blue'">
+        New User? Register here!
+      </a>
+      
+    </form>
+    <hr class="colorgraph">
+  </div> -->
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
         x.className += " responsive";
     } else {
         x.className = "topnav";
