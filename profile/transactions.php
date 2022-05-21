@@ -1,8 +1,8 @@
 <?php
 session_start();
-$account_no = $_SESSION['account_no'];
-$con = mysqli_connect("localhost","root","","transactions");
-$result = mysqli_query($con, "SELECT * FROM `$account_no`");
+$g11_account_no = $_SESSION['account_no'];
+$g11_con = mysqli_connect("localhost","root","12345678","transactions");
+$g11_result = mysqli_query($g11_con, "SELECT * FROM `$g11_account_no`");
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,15 +56,15 @@ function myFunction() {
       <th align="center">Account Balance</th>
     </tr>
     <?php
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      while ($row) {
-        if($row['debit']) {
-          echo "<tr><td align=\"center\">".$row['date']."</td><td align=\"center\">".$row['remark']."</td><td align=\"center\">".$row['debit']."</td><td></td><td align=\"center\">".$row['balance']."</td></tr>";
+      $g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+      while ($g11_row) {
+        if($g11_row['debit']) {
+          echo "<tr><td align=\"center\">".$g11_row['date']."</td><td align=\"center\">".$g11_row['remark']."</td><td align=\"center\">".$g11_row['debit']."</td><td></td><td align=\"center\">".$g11_row['balance']."</td></tr>";
         }
         else {
-          echo "<tr><td align=\"center\">".$row['date']."</td><td align=\"center\">".$row['remark']."</td><td></td><td align=\"center\">".$row['credit']."</td><td align=\"center\">".$row['balance']."</td></tr>";
+          echo "<tr><td align=\"center\">".$g11_row['date']."</td><td align=\"center\">".$g11_row['remark']."</td><td></td><td align=\"center\">".$g11_row['credit']."</td><td align=\"center\">".$g11_row['balance']."</td></tr>";
         }
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
       }
     ?>
   </table>

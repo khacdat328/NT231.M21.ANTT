@@ -1,20 +1,22 @@
 <?php
 session_start();
-$account_no = $_SESSION['account_no'];
-$con = mysqli_connect("localhost","root","","bank");
-$result = mysqli_query($con, "SELECT * FROM register WHERE account_no = '$account_no'");
-$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-$firstname = $row['firstname'];
-$lastname = $row['lastname'];
-$email = $row['email'];
-$phone = $row['phone'];
-$father = $row['father'];
-$mother = $row['mother'];
-$address1 = $row['address1'];
-$address2 = $row['address2'];
-$city = $row['city'];
-$state = $row['state'];
-$nationality = $row['nationality'];
+$g11_account_no = $_SESSION['account_no'];
+$g11_con = mysqli_connect("localhost","root","12345678","bank");
+$g11_result = mysqli_query($g11_con, "SELECT * FROM register WHERE account_no = '$g11_account_no'");
+$g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+$g11_firstname = $g11_row['firstname'];
+$g11_lastname = $g11_row['lastname'];
+$g11_email = $g11_row['email'];
+$g11_phone = $g11_row['phone'];
+$g11_gender = $g11_row['gender'];
+$g11_district = $g11_row['district'];
+$g11_birthday = $g11_row['birthday'];
+$g11_person_id = $g11_row['person_id'];
+$g11_gender = $g11_row['gender'];
+$g11_address = $g11_row['address'];
+$g11_city = $g11_row['city'];
+$g11_country = $g11_row['country'];
+$g11_nationality = $g11_row['nationality'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,43 +66,51 @@ function myFunction() {
     </tr>
     <tr bgcolor="#ffffe6">
       <td><b>Name : </b></td>
-      <td><?php echo $firstname . " " . $lastname ?></td>
+      <td><?php echo $g11_firstname . " " . $g11_lastname ?></td>
     </tr>
     <tr>
       <td><b>Account Number : </b></td>
-      <td><?php echo $account_no ?></td>
+      <td><?php echo $g11_account_no ?></td>
     </tr>
     <tr bgcolor="#ffffe6">
       <td><b>Email ID : </b></td>
-      <td><?php echo $email ?></td>
+      <td><?php echo $g11_email ?></td>
     </tr>
     <tr>
       <td><b>Phone Number : </b></td>
-      <td><?php echo $phone ?></td>
+      <td><?php echo $g11_phone ?></td>
     </tr>
     <tr bgcolor="#ffffe6">
-      <td><b>Father's Name : </b></td>
-      <td><?php echo $father ?></td>
+      <td><b>Gender: </b></td>
+      <td><?php echo $g11_gender ?></td>
     </tr>
     <tr>
-      <td><b>Mother's Name : </b></td>
-      <td><?php echo $mother ?></td>
+      <td><b>Birthday : </b></td>
+      <td><?php echo $g11_birthday ?></td>
     </tr>
     <tr bgcolor="#ffffe6">
+      <td><b>Person ID : </b></td>
+      <td><?php echo $g11_person_id ?></td>
+    </tr>
+    <tr>
       <td><b>Address : </b></td>
-      <td><?php echo $address1 . " " . $address2 ?></td>
+      <td><?php echo $g11_address ?></td>
     </tr>
     <tr>
-      <td><b>City : </b></td>
-      <td><?php echo $city ?></td>
+      <td><b>District : </b></td>
+      <td><?php echo $g11_district ?></td>
     </tr>
     <tr bgcolor="#ffffe6">
-      <td><b>State : </b></td>
-      <td><?php echo $state ?></td>
+      <td><b>City : </b></td>
+      <td><?php echo $g11_city ?></td>
     </tr>
     <tr>
+      <td><b>Country : </b></td>
+      <td><?php echo $g11_country ?></td>
+    </tr>
+    <tr bgcolor="#ffffe6">
       <td><b>Nationality : </b></td>
-      <td><?php echo $nationality ?></td>
+      <td><?php echo $g11_nationality ?></td>
     </tr>
   </table>
 </center>

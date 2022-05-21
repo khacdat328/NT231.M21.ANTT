@@ -1,37 +1,37 @@
 <?php
-$connection = mysqli_connect("localhost", "root", "", "bank");
-$con = mysqli_connect("localhost","root","","transactions");
+$g11_connection = mysqli_connect("localhost", "root", "12345678", "bank");
+$g11_con = mysqli_connect("localhost","root","12345678","transactions");
 session_start();
 if(isset($_POST['submit'])){
-  $fname = $_SESSION['firstname'];
-  $lname = $_SESSION['lastname'];
-  $email = $_SESSION['email'];
-  $password = $_SESSION['password'];
-  $phone = $_POST['phone'];
-  $acc_type = $_POST['acc_type'];
-  $address1 = $_POST['address1'];
-  $address2 = $_POST['address2'];
-  $city = $_POST['city'];
-  $state = $_POST['state'];
-  $country = $_POST['country'];
-  $father = $_POST['father'];
-  $mother = $_POST['mother'];
-  $nationality = $_POST['nationality'];
-  $account_no = rand(999999999,10000000000);
+  $g11_fname = $_SESSION['firstname'];
+  $g11_lname = $_SESSION['lastname'];
+  $g11_email = $_SESSION['email'];
+  $g11_password = $_SESSION['password'];
+  $g11_phone = $_POST['phone'];
+  $g11_acc_type = $_POST['acc_type'];
+  $g11_birthday = $_POST['birthday'];
+  $g11_person_id = $_POST['person_id'];
+  $g11_gender = $_POST['gender'];
+  $g11_address = $_POST['address'];
+  $g11_district = $_POST['district'];
+  $g11_city = $_POST['city'];
+  $g11_country = $_POST['country'];
+  $g11_nationality = $_POST['nationality'];
+  $g11_account_no = rand(999999999,10000000000);
   while (1) {
-    $result = mysqli_query($connection, "SELECT account_no FROM login WHERE account_no='$account_no'");
-    $count = mysqli_num_rows($result);
-    if($count==0)
+    $g11_result = mysqli_query($g11_connection, "SELECT account_no FROM login WHERE account_no='$g11_account_no'");
+    $g11_count = mysqli_num_rows($g11_result);
+    if($g11_count==0)
     {
       break;
     }
-    $account_no = rand(999999999,10000000000);
+    $g11_account_no = rand(999999999,10000000000);
   }
-  $date = date("Y-m-d");
-  $s = mysqli_multi_query($connection, "insert into login(id, pwd, account_no) values ('$email',  '$password', '$account_no'); insert into register(account_no, firstname, lastname, email, phone, acc_type, address1, address2, city, state, country, father, mother, nationality) values ('$account_no', '$fname',  '$lname',  '$email',  '$phone',  '$acc_type',  '$address1',  '$address2',  '$city',  '$state',  '$country',  '$father',  '$mother',  '$nationality'); insert into balance(account_no, balance, online_limit, card_limit, upi_limit, online_no, card_no, upi_no) values ('$account_no', '1000', '', '', '', '', '', '');");
-  $c = mysqli_multi_query($con, "create table `$account_no`(`date` VARCHAR(10) NOT NULL ,`remark` VARCHAR(200) NOT NULL ,`debit` INT(6) NOT NULL ,`credit` INT(6) NOT NULL ,`balance` INT(8) NOT NULL); INSERT INTO `$account_no` (date, remark, debit, credit, balance) VALUES('$date', 'New Account', '', '1000', '1000');");
-  if($s && $c) {
-    $_SESSION['account_no'] = $account_no;
+  $g11_date = date("Y-m-d");
+  $g11_s = mysqli_multi_query($g11_connection, "insert into login(id, pwd, account_no) values ('$g11_email',  '$g11_password', '$g11_account_no'); insert into register(account_no, firstname, lastname, email, phone, acc_type, birthday, person_id, gender, address, district, city, country, nationality) values ('$g11_account_no', '$g11_fname',  '$g11_lname',  '$g11_email',  '$g11_phone',  '$g11_acc_type',  '$g11_birthday',  '$g11_person_id',  '$g11_gender',  '$g11_address',  '$g11_district',  '$g11_city',  '$g11_country',  '$g11_nationality'); insert into balance(account_no, balance, online_limit, card_limit, upi_limit, online_no, card_no, upi_no) values ('$g11_account_no', '1000', null, null, null, null, null, null);");
+  $g11_c = mysqli_multi_query($g11_con, "create table `$g11_account_no`(`date` VARCHAR(10) NOT NULL ,`remark` VARCHAR(200) NOT NULL ,`debit` INT(6) NOT NULL ,`credit` INT(6) NOT NULL ,`balance` INT(8) NOT NULL); INSERT INTO `$g11_account_no` (date, remark, debit, credit, balance) VALUES('$g11_date', 'New Account', null, '1000', '1000');");
+  if($g11_s && $g11_c) {
+    $_SESSION['account_no'] = $g11_account_no;
     header("refresh:0;url=../profile/dashboard.php");
     unset($_SESSION['firstname']);
     unset($_SESSION['lastname']);

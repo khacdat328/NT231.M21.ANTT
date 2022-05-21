@@ -25,78 +25,92 @@
   <div class="register2 form-body">
     <div class="register2 form-content">
       <div class="register2 form-title">
-        <img src="https://tuyensinh.uit.edu.vn/intro/images/uit.png" alt="" width="30" height="30">
+        <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
         <h2>UIT Bank</h2>
       </div>
+
       <form class="register2 form-section" action="" method="POST">
         <fieldset>
           <legend>Register</legend>
 
           <div class="register2 inner-form first-block">
-            <select class="question" id="acc_type" name="acc_type" required autocomplete="off">
-              <option selected disabled>Your Account Type</option>
-              <option value="saving">Saving Account</option>
-              <option value="current">Currrent Account</option>
-            </select>
+            <div class="register2 block-item">
+              <select class="question" id="acc_type" name="acc_type" required autocomplete="off">
+                <option selected disabled>Your Account Type</option>
+                <option value="saving">Saving Account</option>
+                <option value="current">Currrent Account</option>
+              </select>
+              <label for="acc_type"></label>
+            </div>
           </div>
 
 
-          <div class="register2 inner-form second-block">
+          <div class="register2 personal-in4 inner-form second-block">
             <div class="register2 first inner-block">
-              <input type="text" name="phone" class="question" id="phone" required autocomplete="off" />
-              <label for="phone"><span>Mobile Number*</span></label>
+              <div class="register2 block-item block-column">
+                <input type="text" name="address2" class="question" id="address2" required autocomplete="off" />
+                <label for="address2">
+                  <span>Personal ID</span>
+                </label>
+              </div>
+
+              <div class="register2 block-item block-column">
+                <input type="text" name="phone" class="question" id="phone" required autocomplete="off" />
+                <label for="phone"><span>Mobile Number*</span></label>
+              </div>
             </div>
 
             <div class="register2 second inner-block">
-              <div class="register2 block-column">
-                <input type="date" name="DoB" class="question" id="DoB" required autocomplete="off" />
+              <div class="register2 block-item block-column">
+                <input type="date" name="DoB" value="" class="question" id="DoB" required autocomplete="off" />
                 <label for="DoB"><span>Date of birth*</span></label>
               </div>
 
-              <div class="register2 block-column">
-                <select name="gender" id="gender" class=" gender  question" required autocomplete="off">
-                  <option selected disabled>Choose your gender</option>
-                  <option value="">Male</option>
-                  <option value="">Female</option>
-                  <option value="">Others</option>
+              <div class="register2 block-item block-column">
+                <select name="gender" id="gender" class="gender  question" required autocomplete="off">
+                  <option value ="" selected disabled>Choose your gender</option>
+                  <option value="1">Male</option>
+                  <option value="2">Female</option>
+                  <option value="3">Others</option>
                 </select>
+                <label class="gender-label" for="gender"><span>Gender</span></label>
               </div>
             </div>
           </div>
 
-          <div class="register2 inner-form third-block">
-            <div class="register2 inner-block"></div>
-            <div class="register2 inner-block"></div>
+          <div class="register2 inner-form">
+            <div class="register2 block-item">
+              <input type="text" name="city" class="question" id="city" required autocomplete="off" />
+              <label for="city"><span>Address*</span></label>
+            </div>
+
+            <div class="register2 inner-block">
+              <div class="register2 block-item block-column">
+                <input type="text" name="state" class="question" id="state" required autocomplete="off" />
+                <label for="state"><span>District*</span></label>
+              </div>
+
+              <div class="register2 block-item block-column">
+                <input type="text" name="country" class="question" id="country" required autocomplete="off" />
+                <label for="country"><span>City*</span></label>
+              </div>
+            </div>
+
+            <div class="register2 inner-block">
+              <div class="register2 block-item block-column">
+                <input type="text" name="father" class="question" id="father" required autocomplete="off" />
+                <label for="father"><span>Country*</span></label>
+              </div>
+              <div class="register2 block-item block-column">
+                <input type="text" name="nationality" class="question" id="nationality" required autocomplete="off" />
+                <label for="nationality"><span>Nationality*</span></label>
+              </div>
+            </div>
           </div>
 
-
-          <input type="text" name="address2" class="question" id="address2" required autocomplete="off" />
-          <label for="address2">
-            <span>Address Line 2*</span></label>
+          <input class="register2 form-submit" type="submit" name="submit" value="REGISTER">
 
 
-          <input type="text" name="city" class="question" id="city" required autocomplete="off" />
-          <label for="city"><span>City*</span></label>
-
-          <input type="text" name="state" class="question" id="state" required autocomplete="off" />
-          <label for="state"><span>State*</span></label>
-
-          <input type="text" name="country" class="question" id="country" required autocomplete="off" />
-          <label for="country"><span>Country*</span></label>
-
-
-          <input type="text" name="father" class="question" id="father" required autocomplete="off" />
-          <label for="father"><span>Father's Name*</span></label>
-
-          <input type="text" name="mother" class="question" id="mother" required autocomplete="off" />
-          <label for="mother"><span>Mother's Name*</span></label>
-
-          <input type="text" name="nationality" class="question" id="nationality" required autocomplete="off" />
-          <label for="nationality"><span>Nationality*</span></label>
-
-
-          <input type="submit" name="submit" value="REGISTER ME"
-            style="height: 45px; width: 250px; font-size: 25px; color: white; background-color: #4CAF50">
         </fieldset>
       </form>
     </div>
