@@ -31,7 +31,7 @@ select {
 /* LOGIN */
 .login-form{
   padding: 10px 20px;
-  width:100%; 
+  width:60%; 
   max-width: 400px;
   margin: 0 auto;
   border-radius: 10px;
@@ -89,7 +89,8 @@ background: linear-gradient(45deg, rgba(67,173,227,1) 0%, rgba(60,148,181,0.6250
 
 .form-content{
   /* height: 80%; */
-  width: 350px;
+  max-width: 400px;
+  width: 70%;
   margin: auto auto;
   /* border: 1px solid white; */
   border-radius: 10px;
@@ -114,7 +115,6 @@ background: linear-gradient(45deg, rgba(67,173,227,1) 0%, rgba(60,148,181,0.6250
 }
 
 .form-title{
-
   display: grid;
   grid-template-columns: 8% 40%;
   justify-content:center;
@@ -129,7 +129,7 @@ background: linear-gradient(45deg, rgba(67,173,227,1) 0%, rgba(60,148,181,0.6250
   /* align-items: center;  */
   color: black;
   background: rgb(67,173,227);
-background: linear-gradient(344deg, rgba(67,173,227,1) 0%, rgba(60,148,181,0.6250875350140056) 55%, rgb(50, 60, 172) 100%);
+  background: linear-gradient(344deg, rgba(67,173,227,1) 0%, rgba(60,148,181,0.6250875350140056) 55%, rgb(50, 60, 172) 100%);
   border-bottom: 0;
   border-radius: 10px 10px 0 0  ;
 }
@@ -142,7 +142,7 @@ background: linear-gradient(344deg, rgba(67,173,227,1) 0%, rgba(60,148,181,0.625
   padding: 15px 20px;
   width: 100%; 
   height: 100%;
-  /* max-width: 400px; */
+  /* max-width: 600px; */
   margin: 0 auto;
   border-radius:0 0 10px 10px;
   /* border: 1px solid #56baed; */
@@ -158,6 +158,7 @@ background: linear-gradient(344deg, rgba(67,173,227,1) 0%, rgba(60,148,181,0.625
 
 .form-section legend{
   font-size: 14px;
+  /* height: 42px; */
   color: #4ba4d1;
   /* font-weight: bold; */
   /* font-style: ital; */
@@ -218,7 +219,7 @@ background: linear-gradient(344deg, rgba(67,173,227,1) 0%, rgba(60,148,181,0.625
   /* display: none; */
 }
 .register2.form-content{
-  width: 700px;
+  max-width: 700px;
 }
 
 input[type=date]:required:invalid::-webkit-datetime-edit {
@@ -243,19 +244,35 @@ input[type=date]:focus::-webkit-datetime-edit {
   border: 1px solid gray;
 }
 
-.register2.second.inner-block{
+.register2 .inner-block{
   display: flex;
+  align-items: baseline;
 }
 
-.register2.second .register2.block-column{
+.register2.block-column{
   width: 50%;
+  /* padding: 5px; */
   /* display: inline-block; */
   /* display: block; */
 }
+
+.register2.block-item{
+  padding: 0 5px;
+}
 .block-column .gender{
-  /* height: 100%; */
-  /* line-height: 28px; */
-  border:1px solid red;
+  height: fit-content;
+  min-height: 42px;
+  line-height: 28px;
+  border:1px solid gray;
+}
+
+.gender:valid{
+  /* margin-top: 5px; */
+  min-height: 57px;
+  padding: 20px 5px 5px ;
+}
+.register2.form-submit{
+  margin: 0 auto 5px;
 }
 /* REGISTER2 */
 /* --------------------------------------- */
@@ -310,11 +327,13 @@ select.question:focus + label {
 input.question:focus,
 input.question:valid {
   padding-top: 20px;
+  /* margin-bottom: 20px; */
+  /* margin-top: 20px; */
 }
 
-/* select.question:valid {
-  margin-top: 35px;
-} */
+select.question:valid {
+  /* padding-top: 20px; */
+}
 
 input.question:focus + label > span,
 input.question:valid + label > span {
@@ -323,17 +342,22 @@ input.question:valid + label > span {
   color: rgb(136, 132, 132);
 }
 
-select.question:focus + label > span,
+select.question + label > span{
+  display: none;
+}
+section.question:focus + label > span,
 select.question:valid + label > span {
+  display: block;
   top: -58px;
   font-size: 13px;
+  /* padding-top: 10px; */
   color: #333;
 }
 
-input.question:valid + label,
+/* input.question:valid + label,
 select.question:valid + label {
   border-color: green;
-}
+} */
 
 input.question:invalid,
 select.question:invalid {
