@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Singhal Bank</title>
+  <title>UIT BANK</title>
   <link rel="icon" href="../img/l.png" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="../css/style.css">
 
 <script>
+var filter_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+var filter_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#\$%\^&\*]).{8,}$/;
 function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
@@ -16,6 +18,35 @@ function myFunction() {
     } else {
         x.className = "topnav";
     }
+}
+function checkEmail(){
+	var email = document.getElementById("id").value;
+	if ( !filter_email.test(email)){
+	  document.getElementById("msgEmail").innerHTML = "Invalid email address!";
+	  return false;
+	}
+	else {
+	  document.getElementById("msgEmail").innerHTML ="";
+	  return true;
+	}
+}
+function checkPwd(){
+	var pwd = document.getElementById("password").value;
+	if ( !filter_password.test(pwd)){
+	  document.getElementById("msgPwd").innerHTML = "Invalid password!";
+	  return false;
+	}
+	else {
+	  document.getElementById("msgPwd").innerHTML ="";
+	  return true;
+	}
+}
+function checkAll(){
+	if(checkEmail() && checkPwd())
+	{ return true;}
+	else {
+	alert ("Please enter all information correctly!");
+	return false;}
 }
 </script>
 </head>
@@ -34,19 +65,21 @@ function myFunction() {
   <br>
     <div><p style="color: red">Wrong email or password. Please try again!</p></div>
     <hr class="colorgraph">
-  <form action="../db/login.php" method="post">
+  <form action="../db/login.php" method="post" onsubmit ="return checkAll()">
     <table cellspacing="25">
       <col width="80%">
       <tr>
         <td>
-          <input type="text" name="id" class="question" id="id" required autocomplete="off" />
-          <label for="id"><span>User ID</span></label>
+          <input type="text" name="id" oninput="checkEmail()" class="question" id="id" required autocomplete="off" />
+          <label for="id"><span>Your email</span></label>
+          <div style="color: red;" id="msgEmail"></div>
         </td>
       </tr>
       <tr>
         <td>
-          <input type="password" name="password" class="question" id="password" required autocomplete="off" />
+          <input type="password" name="password" oninput="checkPwd()" class="question" id="password" required autocomplete="off" />
           <label for="password"><span>Password</span></label>
+          <div style="color: red;" id="msgPwd"></div>
         </td>
       </tr>
       <tr>

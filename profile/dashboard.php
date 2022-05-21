@@ -1,16 +1,25 @@
 <?php
 session_start();
-$account_no = $_SESSION['account_no'];
-$con = mysqli_connect("localhost","root","","bank");
-$resultb = mysqli_query($con, "SELECT * FROM balance WHERE account_no = '$account_no'");
-$resultr = mysqli_query($con, "SELECT * FROM register WHERE account_no = '$account_no'");
-$rowb = mysqli_fetch_array($resultb,MYSQLI_ASSOC);
-$rowr = mysqli_fetch_array($resultr,MYSQLI_ASSOC);
-$balance = $rowb['balance'];
-$online_limit = $rowb['online_limit'];
-$card_limit = $rowb['card_limit'];
-$firstname = $rowr['firstname'];
-$lastname = $rowr['lastname'];
+if(isset($_SESSION['account_no'])){
+$g11_account_no = $_SESSION['account_no'];
+$g11_con = mysqli_connect("localhost","root","12345678","bank");
+$g11_resultb = mysqli_query($g11_con, "SELECT * FROM balance WHERE account_no = '$g11_account_no'");
+$g11_resultr = mysqli_query($g11_con, "SELECT * FROM register WHERE account_no = '$g11_account_no'");
+$g11_rowb = mysqli_fetch_array($g11_resultb,MYSQLI_ASSOC);
+$g11_rowr = mysqli_fetch_array($g11_resultr,MYSQLI_ASSOC);
+$g11_balance = $g11_rowb['balance'];
+$g11_online_limit = $g11_rowb['online_limit'];
+$g11_card_limit = $g11_rowb['card_limit'];
+$g11_firstname = $g11_rowr['firstname'];
+$g11_lastname = $g11_rowr['lastname'];
+echo'
+	<script type="text/javascript">
+        sessionStorage.setItem("login", true);
+        </script>';
+}
+else {
+	header("refresh:0;url=../login/loginW.html");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,6 +38,8 @@ function myFunction() {
         x.className = "topnav";
     }
 }
+let data = sessionStorage.getItem("login");
+console.log(data);
 </script>
 </head>
 <body>
@@ -46,7 +57,7 @@ function myFunction() {
   </a>
 </div>
 <br><br>
-<h4 align="right" style="color: red; width: 95%">Welcome <?php echo $firstname . " " . $lastname ?></h4>
+<h4 align="right" style="color: red; width: 95%">Welcome <?php echo $g11_firstname . " " . $g11_lastname ?></h4>
 <center><table bgcolor="#ffe6e6">
   <col width="869">
   <tr>
@@ -63,7 +74,7 @@ function myFunction() {
         <col width="200">
         <tr>
           <td><img src="../img/d1.jpg" height="110px"; width="110px"></td>
-          <td ><center><h4>My Balance</h4><p id="balance">Rs. <?php echo $balance ?></p></center></td>
+          <td ><center><h4>My Balance</h4><p id="balance">Rs. <?php echo $g11_balance ?></p></center></td>
         </tr>
       </table>
     </td>
@@ -73,7 +84,7 @@ function myFunction() {
         <col width="200">
         <tr>
           <td><img src="../img/d2.jpg" height="110px"; width="110px"></td>
-          <td ><center><h4>Total Limit</h4><p id="tlimit">Rs. <?php echo $online_limit + $card_limit ?></p></center></td>
+          <td ><center><h4>Total Limit</h4><p id="tlimit">Rs. <?php echo $g11_online_limit + $g11+card_limit ?></p></center></td>
         </tr>
       </table>
     </td>
@@ -85,7 +96,7 @@ function myFunction() {
         <col width="200">
         <tr>
           <td><img src="../img/d3.jpg" height="110px"; width="110px"></td>
-          <td ><center><h4>Online Transaction Limit</h4><p id="olimit">Rs. <?php echo $online_limit ?></p></center></td>
+          <td ><center><h4>Online Transaction Limit</h4><p id="olimit">Rs. <?php echo $g11_online_limit ?></p></center></td>
         </tr>
       </table>
     </td>
@@ -95,7 +106,7 @@ function myFunction() {
         <col width="200">
         <tr>
           <td><img src="../img/d4.jpg" height="110px"; width="110px"></td>
-          <td ><center><h4>Card Limit</h4><p id="climit">Rs. <?php echo $card_limit ?></p></center></td>
+          <td ><center><h4>Card Limit</h4><p id="climit">Rs. <?php echo $g11_card_limit ?></p></center></td>
         </tr>
       </table>
     </td>

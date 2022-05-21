@@ -1,15 +1,30 @@
 <?php
 session_start();
-$account_no = $_SESSION['account_no'];
-$con = mysqli_connect("localhost","root","","bank");
+$g11_account_no = $_SESSION['account_no'];
+$g11_con = mysqli_connect("localhost","root","12345678","bank");
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-  $old_password = $_POST['old_password'];
-  $new_password = $_POST['new_password'];
-  $result = mysqli_query($con, "SELECT * FROM login WHERE account_no = '$account_no'");
-  $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-  $password = $row['pwd'];
-  if($password == $old_password) {
-    $c = mysqli_query($con, "update login set pwd = '$new_password' where account_no = '$account_no';");
+  $g11_old_password = $_POST['old_password'];
+  $g11_new_password = $_POST['new_password'];
+  $g11_result = mysqli_query($g11_con, "SELECT * FROM login WHERE account_no = '$g11_account_no'");
+  $g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+  $g11_password = $g11_row['pwd'];
+  $g11_email = $g11_row['id'];
+  $g11_secretSalt = "g11.uit.nt213.m21.antt";
+  $g11_message = $g11_secretSalt.$g11_email;
+  $g11_hashed = md5($g11_message);
+  $g11_encryptionMethod = "AES-256-CBC"; 
+
+//To encrypt
+$g11_old_crypt = openssl_encrypt($g11_hashed, $g11_encryptionMethod, $g11_old_password);
+  if($g11_password == $g11_old_crypt) {
+    $g11_secretSalt = "g11.uit.nt213.m21.antt";
+    $g11_message = $g11_secretSalt.$g11_email;
+    $g11_hashed = md5($g11_message);
+    $g11_encryptionMethod = "AES-256-CBC"; 
+
+//To encrypt
+$g11_new_crypt = openssl_encrypt($g11_hashed, $g11_encryptionMethod, $g11_new_password);
+    $g11_c = mysqli_query($g11_con, "update login set pwd = '$g11_new_crypt' where account_no = '$g11_account_no';");
     header("refresh:0;url=success.html");
   }
   else {
@@ -27,6 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <link rel="stylesheet" href="../../css/response.css">
 <link rel="stylesheet" href="../../css/style.css">
 <script>
+var filter_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#\$%\^&\*]).{8,}$/;
 function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
@@ -40,11 +56,31 @@ function validate() {
       var v2 = document.getElementById("new_password_confirmation").value;
       if(v1 != v2) {
         document.getElementById("msg").innerHTML = "Password do not match";
+        return false;
       }
       else {
         document.getElementById("msg").innerHTML = "";
+        return true;
       }
     }
+    function checkPwd(){
+	var pwd = document.getElementById("new_password").value;
+	if ( !filter_password.test(pwd)){
+	  document.getElementById("msgPwd").innerHTML = "Password must contain at least one number, one special character, one uppercase and lowercase letter, and at least 8 or more characters";
+	  return false;
+	}
+	else {
+	  document.getElementById("msgPwd").innerHTML ="";
+	  return true;
+	}
+}
+function checkAll(){
+	if(checkPwd() && validate())
+	{ return true;}
+	else {
+	alert ("Please enter all information correctly!");
+	return false;}
+}
 </script>
 </head>
 <body>
@@ -65,7 +101,7 @@ function validate() {
 <center>
   <div style="background-color: #4CAF50; height: 45px; width: 100%; color: white; "><h1>Change Password</h1></div>
   <br><br>
-  <form action="" method="POST">
+  <form method="POST" onsubmit ="return checkAll()" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <table width="40%">
       <tr>
         <td>
@@ -77,8 +113,9 @@ function validate() {
     <table width="40%">
       <tr>
         <td>
-          <input type="password" name="new_password" class="question" id="new_password" required autocomplete="off" />
+          <input type="password" name="new_password" oninput="checkPwd()" class="question" id="new_password" required autocomplete="off" />
           <label for="new_password"><span>New Password</span></label>
+          <div style="color: red;" id="msgPwd"></div>
         </td>
       </tr>
     </table>

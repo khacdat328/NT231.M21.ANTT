@@ -1,6 +1,7 @@
 <?php
   session_start();
   unset($_SESSION['account_no']);
+  header("refresh:0;url=../login/login.html");
 ?>
 <!DOCTYPE html>
 <html>
