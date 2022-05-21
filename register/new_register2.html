@@ -29,10 +29,9 @@
         <h2>UIT Bank</h2>
       </div>
 
-      <form class="register2 form-section" action="" method="POST">
+      <form class="register2 form-section" action="../db/register.php" method="post" onsubmit="return checkAll()" >
         <fieldset>
           <legend>Register</legend>
-
           <div class="register2 inner-form first-block">
             <div class="register2 block-item">
               <select class="question" id="acc_type" name="acc_type" required autocomplete="off">
@@ -48,21 +47,21 @@
           <div class="register2 personal-in4 inner-form second-block">
             <div class="register2 first inner-block">
               <div class="register2 block-item block-column">
-                <input type="text" name="address2" class="question" id="address2" required autocomplete="off" />
-                <label for="address2">
-                  <span>Personal ID</span>
-                </label>
+                <input type="text" name="person_id" oninput="checkPid()" class="question" id="person_id" required autocomplete="off" />
+                <label for="person_id"><span>Personal ID</span></label>
+                <div style="color: red;" id="msgPid"></div>
               </div>
 
               <div class="register2 block-item block-column">
-                <input type="text" name="phone" class="question" id="phone" required autocomplete="off" />
+                <input type="text" name="phone" oninput="checkPhone()" class="question" id="phone" required autocomplete="off" />
                 <label for="phone"><span>Mobile Number*</span></label>
+                <div style="color: red;" id="msgPhone"></div>
               </div>
             </div>
 
             <div class="register2 second inner-block">
               <div class="register2 block-item block-column">
-                <input type="date" name="DoB" value="" class="question" id="DoB" required autocomplete="off" />
+                <input type="date" name="DoB" class="question" id="DoB" min="1920-01-01" max="2004-12-31" required autocomplete="off" />
                 <label for="DoB"><span>Date of birth*</span></label>
               </div>
 
@@ -80,29 +79,32 @@
 
           <div class="register2 inner-form">
             <div class="register2 block-item">
-              <input type="text" name="city" class="question" id="city" required autocomplete="off" />
-              <label for="city"><span>Address*</span></label>
+              <input type="text" name="address" oninput="checkAddr()" class="question" id="address" required autocomplete="off" />
+              <label for="address"><span>Address*</span></label>
+              <div style="color: red;" id="msgAddr"></div>
             </div>
 
             <div class="register2 inner-block">
               <div class="register2 block-item block-column">
-                <input type="text" name="state" class="question" id="state" required autocomplete="off" />
-                <label for="state"><span>District*</span></label>
+                <input type="text" name="district" oninput="checkDistrict()" class="question" id="district" required autocomplete="off" />
+                <label for="district"><span>District*</span></label>
+                <div style="color: red;" id="msgDistrict"></div>
               </div>
 
               <div class="register2 block-item block-column">
-                <input type="text" name="country" class="question" id="country" required autocomplete="off" />
-                <label for="country"><span>City*</span></label>
+                <input type="text" name="city" oninput="checkCity()" class="question" id="city" required autocomplete="off" />
+                <label for="city"><span>City*</span></label>
+                <div style="color: red;" id="msgCity"></div>
               </div>
             </div>
 
             <div class="register2 inner-block">
               <div class="register2 block-item block-column">
-                <input type="text" name="father" class="question" id="father" required autocomplete="off" />
-                <label for="father"><span>Country*</span></label>
+                <input type="text" name="country" oninput="checkCountry()" class="question" id="country" required autocomplete="off" />
+                <label for="country"><span>Country*</span></label>
               </div>
               <div class="register2 block-item block-column">
-                <input type="text" name="nationality" class="question" id="nationality" required autocomplete="off" />
+                <input type="text" name="nationality" oninput="checkNationality()" class="question" id="nationality" required autocomplete="off" />
                 <label for="nationality"><span>Nationality*</span></label>
               </div>
             </div>
@@ -110,97 +112,10 @@
 
           <input class="register2 form-submit" type="submit" name="submit" value="REGISTER">
 
-
         </fieldset>
       </form>
     </div>
   </div>
-  <!-- <center>
-    <div style="background-color: #4CAF50; height: 80px; width: 100%; align-items: center; color: white ">
-      <h1>Registration : Step 2</h1>
-      <p>* All Field are Mandatory</p>
-    </div>
-    <br>
-    <hr class="colorgraph">
-    <form action="../db/register.php" method="post">
-      <table width="80%" cellspacing="8">
-        <col width="400">
-        <col width="400">
-        <tr>
-          <td>
-            <input type="text" name="phone" class="question" id="phone" required autocomplete="off" />
-            <label for="phone"><span>Mobile Number*</span></label>
-          </td>
-          <td>
-            <select class="question" id="acc_type" name="acc_type" required autocomplete="off">
-              <option value="saving">Saving Account</option>
-              <option value="current">Currrent Account</option>
-            </select>
-            <label for="acc_type"><span>Account Type*</span></label>
-          </td>
-        </tr>
-      </table>
-      <table width="80%" cellspacing="8">
-        <tr>
-          <td>
-            <input type="text" name="address1" class="question" id="address1" required autocomplete="off" />
-            <label for="address1"><span>Address Line 1*</span></label>
-          </td>
-        </tr>
-      </table>
-      <table width="80%" cellspacing="8">
-        <tr>
-          <td>
-            <input type="text" name="address2" class="question" id="address2" required autocomplete="off" />
-            <label for="address2">
-              <span>Address Line 2*</span></label>
-          </td>
-        </tr>
-      </table>
-      <table width="80%" cellspacing="8">
-        <tr>
-          <td>
-            <input type="text" name="city" class="question" id="city" required autocomplete="off" />
-            <label for="city"><span>City*</span></label>
-          </td>
-          <td>
-            <input type="text" name="state" class="question" id="state" required autocomplete="off" />
-            <label for="state"><span>State*</span></label>
-          </td>
-          <td>
-            <input type="text" name="country" class="question" id="country" required autocomplete="off" />
-            <label for="country"><span>Country*</span></label>
-          </td>
-        </tr>
-      </table>
-      <table width="80%" cellspacing="8">
-        <tr>
-          <td>
-            <input type="text" name="father" class="question" id="father" required autocomplete="off" />
-            <label for="father"><span>Father's Name*</span></label>
-          </td>
-          <td>
-            <input type="text" name="mother" class="question" id="mother" required autocomplete="off" />
-            <label for="mother"><span>Mother's Name*</span></label>
-          </td>
-          <td>
-            <input type="text" name="nationality" class="question" id="nationality" required autocomplete="off" />
-            <label for="nationality"><span>Nationality*</span></label>
-          </td>
-        </tr>
-      </table>
-      <hr class="colorgraph">
-      <table width="80%">
-        <tr>
-          <td align="center">
-            <input type="submit" name="submit" value="REGISTER ME"
-              style="height: 45px; width: 250px; font-size: 25px; color: white; background-color: #4CAF50">
-          </td>
-        </tr>
-      </table>
-    </form>
-  </center> -->
-
   <script>
     function myFunction() {
       var x = document.getElementById("myTopnav");
