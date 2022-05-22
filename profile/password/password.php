@@ -35,8 +35,8 @@ $g11_new_crypt = openssl_encrypt($g11_hashed, $g11_encryptionMethod, $g11_new_pa
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Singhal Bank</title>
-  <link rel="icon" href="../../img/l.png" type="image/x-icon">
+<title>UIT Bank</title>
+    <link rel="icon" href="../asset/img/logo-uit.png" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../../css/response.css">

@@ -11,17 +11,28 @@
 </head>
 
 <body>
-  <div class="header topnav" id="myTopnav">
+  <!-- <div class="header topnav" id="myTopnav">
     <img src="../img/lg.png" height="44" width="204.8">
     <a href="../index.html" class="active"><i class="fa fa-fw fa-home "></i>Home</a>
     <a href="../login/login.html" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Login</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
+  </div> -->
+
+  <div id="header">
+    <div class="header-content">
+      <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
+      <div class="direct-container">
+        <a href="../login/login.html" class="direct-link"><i class="fa fa-fw fa-sign-in "></i>LOGIN</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
   </div>
 
   <div class="register1 form-body">
-
     <div class="register1 form-content">
       <div class="register1 form-title">
         <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
@@ -30,7 +41,8 @@
       <form class="register1 form-section" action="" method="POST">
         <fieldset>
           <legend>Register</legend>
-          <input type="text" name="firstname" class="question" oninput="check()" id="firstname" required autocomplete="off">
+          <input type="text" name="firstname" class="question" oninput="check()" id="firstname" required
+            autocomplete="off">
           <label style="margin-bottom: 10px;" for="firstname">
             <span>First Name*</span>
           </label>
@@ -57,7 +69,7 @@
           </label>
           <div style="color: red; font-size: 12px;" id="msg"></div>
 
-          <input class="register1 form-submit" id="register1-submit" type="submit"  name="submit" value="Submit">
+          <input class="register1 form-submit" id="register1-submit" type="submit" name="submit" value="Submit">
           <a class="register1 login-link" href="../login/login.html" onmouseover="this.style.color = 'red'"
             onmouseleave="this.style.color = 'blue'">
             Already had an account?
@@ -114,16 +126,15 @@
       }
     }
 
-    function check(){
+    function check() {
       var fname = document.getElementById('firstname').value;
       // var lname = document.getElementById('lastname').value;
       var regex = /^[A-Za-z\s+$]/;
       var msg1 = document.getElementById('msg1')
-      if(!regex.test(fname))
-      {
+      if (!regex.test(fname)) {
         msg1.innerHTML = "unmatch!!";
         return false;
-      } else{
+      } else {
         msg1.innerHTML = ""
         return true;
       }

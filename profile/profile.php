@@ -1,9 +1,9 @@
 <?php
 session_start();
 $g11_account_no = $_SESSION['account_no'];
-$g11_con = mysqli_connect("localhost","root","12345678","bank");
+$g11_con = mysqli_connect("localhost", "root", "12345678", "bank");
 $g11_result = mysqli_query($g11_con, "SELECT * FROM register WHERE account_no = '$g11_account_no'");
-$g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+$g11_row = mysqli_fetch_array($g11_result, MYSQLI_ASSOC);
 $g11_firstname = $g11_row['firstname'];
 $g11_lastname = $g11_row['lastname'];
 $g11_email = $g11_row['email'];
@@ -20,99 +20,143 @@ $g11_nationality = $g11_row['nationality'];
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Singhal Bank</title>
-  <link rel="icon" href="../img/l.png" type="image/x-icon">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../css/response.css">
-<script>
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
+  <title>UIT Bank</title>
+  <link rel="icon" href="../asset/img/logo-uit.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/response.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
         x.className += " responsive";
-    } else {
+      } else {
         x.className = "topnav";
+      }
     }
-}
-</script>
-<style type="text/css">
-  table { border: 1px solid black; border-collapse: collapse; }
-  table td {border: 1px solid black; border-right: 1px solid white; border-left: 1px solid white}
-</style>
+  </script>
+  <style type="text/css">
+    table {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    table td {
+      border: 1px solid black;
+      border-right: 1px solid white;
+      border-left: 1px solid white
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="topnav" id="myTopnav">
-  <img style="float:right; right:1" src="../img/lg.png" height="44" width="204.8">
-  <a href="dashboard.php"><i class="fa fa-fw fa-calculator "></i>Dashboard</a>
-  <a href="profile.php" class="active"><i class="fa fa-fw fa-id-card-o "></i>Profile</a>
-  <a href="transfer.php"><i class="fa fa-fw fa-cogs "></i>Transfer Money</a>
-  <a href="transactions.php"><i class="fa fa-fw fa-file-text "></i>Transactions</a>
-  <a href="limit.php"><i class="fa fa-fw fa-sliders "></i>Set Limit</a>
-  <a href="logout.php" style="float: right"><i class="fa fa-fw fa-sign-out "></i>Logout</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
-<br><br>
-<center>
-  <div style="background-color: #4CAF50; height: 45px; width: 100%; color: white; "><h1>My Profile</h1></div>
-  <table cellpadding="10">
-    <col width="400">
-    <col width="600">
-    <tr>
-      <td colspan="2" align="right" style="border-top: 1px solid white;"><input type="button" name="changepwd" value="CHANGE PASSWORD" onclick="window.location.href='password/password.php'" style="height: 40px; width: 180px; color: white; background-color: #cc33ff"><input type="button" name="editprofile" value="EDIT PROFILE" onclick="window.location.href='editprofile.php'" style="height: 40px; width: 150px; color: white; background-color: #cc33ff"></td>
-    </tr>
-    <tr bgcolor="#ffffe6">
-      <td><b>Name : </b></td>
-      <td><?php echo $g11_firstname . " " . $g11_lastname ?></td>
-    </tr>
-    <tr>
-      <td><b>Account Number : </b></td>
-      <td><?php echo $g11_account_no ?></td>
-    </tr>
-    <tr bgcolor="#ffffe6">
-      <td><b>Email ID : </b></td>
-      <td><?php echo $g11_email ?></td>
-    </tr>
-    <tr>
-      <td><b>Phone Number : </b></td>
-      <td><?php echo $g11_phone ?></td>
-    </tr>
-    <tr bgcolor="#ffffe6">
-      <td><b>Gender: </b></td>
-      <td><?php echo $g11_gender ?></td>
-    </tr>
-    <tr>
-      <td><b>Birthday : </b></td>
-      <td><?php echo $g11_birthday ?></td>
-    </tr>
-    <tr bgcolor="#ffffe6">
-      <td><b>Person ID : </b></td>
-      <td><?php echo $g11_person_id ?></td>
-    </tr>
-    <tr>
-      <td><b>Address : </b></td>
-      <td><?php echo $g11_address ?></td>
-    </tr>
-    <tr>
-      <td><b>District : </b></td>
-      <td><?php echo $g11_district ?></td>
-    </tr>
-    <tr bgcolor="#ffffe6">
-      <td><b>City : </b></td>
-      <td><?php echo $g11_city ?></td>
-    </tr>
-    <tr>
-      <td><b>Country : </b></td>
-      <td><?php echo $g11_country ?></td>
-    </tr>
-    <tr bgcolor="#ffffe6">
-      <td><b>Nationality : </b></td>
-      <td><?php echo $g11_nationality ?></td>
-    </tr>
-  </table>
-</center>
+  <div id="header">
+    <div class="header-content">
+      <div class="home-direct">
+        <a href="">
+          <img src="../asset/img/banner_0.png" alt="" height="60">
+        </a>
+      </div>
+      <div class="direct-container">
+        <a class="direct-link" href="dashboard.php"><i class="fa fa-fw fa-calculator "></i>Dashboard</a>
+        <a class="direct-link" href="profile.php" class="active"><i class="fa fa-fw fa-id-card-o "></i>Profile</a>
+        <a class="direct-link" href="transfer.php"><i class="fa fa-fw fa-cogs "></i>Transfer</a>
+        <a class="direct-link" href="transactions.php"><i class="fa fa-fw fa-file-text "></i>Transactions</a>
+        <a class="direct-link" href="limit.php"><i class="fa fa-fw fa-sliders "></i>Set Limit</a>
+      </div>
+      <div class="direct-container">
+        <a class="direct-link " href="logout.php"><i class="fa fa-fw fa-sign-out "></i>Logout</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+  <div class="profile user-profile form-body">
+    <div class="form-content profile user-profile">
+      <div class="profile user-profile form-title">
+        <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
+        <h2>UIT Bank</h2>
+      </div>
+
+      <div class="profile user-profile profile-content">
+        <div class="profile user-profile profile-column basical-profile">
+          <div class="avatar personal-profile">
+            <img src="../asset/img/logo-uit.png" alt="">
+          </div>
+          <div class="personal-profile">
+            <h2><?php echo $g11_firstname . " " . $g11_lastname ?></h2>
+            <!-- <h2>CHÂU KHẮC ĐẠT</h2> -->
+            <p><?php echo $g11_email ?></p>
+            <!-- <p>19521329@gmail.com</p> -->
+          </div>
+        </div>
+
+        <div class="profile user-profile profile-column detail-profile">
+          <div class="profile profile-container  personal-in4">
+            <div class="profile user-profile inner-form">
+              <div class="profile user-profile profile-display">
+                <!-- <p> Account Number: 12345678 </p> -->
+                <p> <?php echo $g11_account_no ?> </p>
+              </div>
+              <div class="profile user-profile profile-display">
+
+                <!-- <p>Phone number: 0123456789</p> -->
+                <p></p>
+              </div>
+              <div class="profile user-profile profile-display">
+                <!-- <p>Personal ID: 1234589</p> -->
+                <p><?php echo $g11_person_id ?></p>
+              </div>
+              <div class="profile user-profile profile-display">
+                <!-- <p>Date of birth: 01/01/1999</p> -->
+                <p><?php echo $g11_birthday ?></p>
+              </div>
+              <div class="profile user-profile profile-display">
+                <!-- <p>Gender: Male</p> -->
+                <p><?php echo $g11_gender ?></p>
+              </div>
+            </div>
+          </div>
+          <div class="profile profile-container address-in4">
+            <div class="profile user-profile inner-form">
+              <div class="profile user-profile profile-display">
+                <!-- <p>Address: 09 xxxxxxx, Dĩ An, Bình Dương </p> -->
+                <p><?php echo $g11_address ?></p>
+              </div>
+              <div class="profile user-profile profile-display">
+                <!-- <p>District: Lorem ipsum</p> -->
+                <p><?php echo $g11_district ?></p>
+              </div>
+              <div class="profile user-profile profile-display">
+                <!-- <p>City: Lorem, ipsum dolor.</p> -->
+                <p><?php echo $g11_city ?></p>
+              </div>
+              <div class="profile user-profile profile-display">
+                <!-- <p>Country: Lorem, ipsum.</p> -->
+                <p><?php echo $g11_country ?></p>
+              </div>
+              <div class="profile user-profile profile-display">
+                <!-- <p>Nationality: Lorem, ipsum.</p> -->
+                <p><?php echo $g11_nationality ?></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="profile user-profile modify-btn">
+        <input type="button" name="changepwd" value="CHANGE PASSWORD" onclick="window.location.href='../password/password.php'">
+        <input type="button" name="editprofile" value="EDIT PROFILE" onclick="window.location.href='editprofile.php'">
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>

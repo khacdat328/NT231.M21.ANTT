@@ -6,29 +6,35 @@ body {
 .topnav {
   /* height: fit-content; */
   overflow: hidden;
-  background-color: #ffff80;
+  padding-right: 50px;
+  padding-left: 50px;
+  background-color: white;
   position: relative;
   top: 0;
   width: 100%;
+  border-bottom: 1px solid #2A79C9;
 }
 
 .topnav a {
   float: left;
   display: block;
-  color: #CC0033;
+  color: #2A79C9;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
 
+.topnav a.page-logo{
+  padding: 0;
+}
 .topnav a:hover {
   background-color: #333;
   color: #f2f2f2;
 }
 
 .active {
-  background-color: #4CAF50;
+  background-color: #2A79C9;
   color: white;
 }
 
