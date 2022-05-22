@@ -32,7 +32,7 @@ select {
 
 .login.form-body{
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 50% 50%;
 }
 
 .login.form-background{
@@ -43,6 +43,11 @@ select {
   justify-content: center;
 }
 
+.login.form-background div img{
+  width: 60%;
+  height: auto;
+  min-width: 250px;
+}
 .login.grid-item{
   display: flex;
   align-items: center;

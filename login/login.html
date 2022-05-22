@@ -14,7 +14,7 @@
   <div class="topnav" id="myTopnav">
     <img src="../img/lg.png" height="44" width="204.8">
     <a href="../index.html" class="active"><i class="fa fa-fw fa-home "></i>Home</a>
-    <a href="../register/register.php" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Sign Up</a>
+    <a href="../register/new_register.html" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Sign Up</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
@@ -34,64 +34,87 @@
           <h2>UIT Bank</h2>
         </div>
 
-        <form action="../db/login.php" method="post" class="login form-section">
+        <form action="../db/login.php" method="post" class="login form-section" onsubmit="return checkAll()">
           <div class="login input-container">
-            <input type="text" name="id" class="question" id="id" placeholder="User ID" required autocomplete="off" />
+            <!-- <input type="text" name="id" class="question" id="id" placeholder="User ID" required autocomplete="off" /> -->
+            <input type="text" name="id" oninput="checkEmail()" placeholder="User ID" class="question" id="id" required
+              autocomplete="off" />
+            <!-- <label for="id"><span>Your email</span></label> -->
+            <div style="color: red;" id="msgEmail"></div>
           </div>
 
           <div class="login input-container">
-            <input type="password" name="password" class="question" id="password" placeholder="password" required autocomplete="off" />
+            <!-- <input type="password" name="password" class="question" id="password" placeholder="password" required
+              autocomplete="off" /> -->
+            <input type="password" name="password" oninput="checkPwd()" placeholder="Password" class="question" id="password" required
+              autocomplete="off" />
+            <div style="color: red;" id="msgPwd"></div>
           </div>
           <input type="submit" name="submit" class="form-submit" value="Submit">
           <a href="../register/register.php" class="register-link" onmouseover="this.style.color = 'red'"
             onmouseleave="this.style.color = 'blue'">
             New User? Register here!
           </a>
-          <a href="#" class="recover-password" onmouseleave="this.style.color = 'blue'" onmouseover="this.style.color = 'red'">Forget your password?</a>
+          <a href="#" class="recover-password" onmouseleave="this.style.color = 'blue'"
+            onmouseover="this.style.color = 'red'">Forget your password?</a>
         </form>
       </div>
     </div>
   </div>
 
   <script>
+    var filter_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var filter_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#\$%\^&\*]).{8,}$/;
     function myFunction() {
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
-      } else {
-        x.className = "topnav";
-      }
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
     }
-    function checkEmail() {
+    function checkEmail(){
       var email = document.getElementById("id").value;
-      if (!filter_email.test(email)) {
+      if ( !filter_email.test(email)){
         document.getElementById("msgEmail").innerHTML = "Invalid email address!";
         return false;
       }
       else {
-        document.getElementById("msgEmail").innerHTML = "";
+        document.getElementById("msgEmail").innerHTML ="";
         return true;
       }
     }
-    function checkPwd() {
+    function checkPwd(){
       var pwd = document.getElementById("password").value;
-      if (!filter_password.test(pwd)) {
+      if ( !filter_password.test(pwd)){
         document.getElementById("msgPwd").innerHTML = "Invalid password!";
         return false;
       }
       else {
-        document.getElementById("msgPwd").innerHTML = "";
+        document.getElementById("msgPwd").innerHTML ="";
         return true;
       }
     }
-    function checkAll() {
-      if (checkEmail() && checkPwd()) { return true; }
+    function checkAll(){
+      if(checkEmail() && checkPwd())
+      { return true;}
       else {
-        alert("Please enter all information correctly!");
-        return false;
-      }
+      alert ("Please enter all information correctly!");
+      return false;}
     }
-  </script>
+    /*$(document).ready(function() {
+            function disableBack() { window.history.forward() }
+    
+            window.onload = disableBack();
+            window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+        });*/
+    /*if ( typeof(Storage) !== 'undefined') {
+        // Khởi tạo sesionStorage
+        sessionStorage.setItem('login',true);
+    } else {
+        alert('Trình duyệt của bạn không hỗ trợ!');
+    }*/
+    </script>
 </body>
 
 </html>
