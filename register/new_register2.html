@@ -13,27 +13,39 @@
 
 <body>
 
-  <div class="topnav" id="myTopnav">
+  <!-- <div class="topnav" id="myTopnav">
     <img src="../img/lg.png" height="44" width="204.8">
     <a href="../index.html" class="active"><i class="fa fa-fw fa-home "></i>Home</a>
     <a href="../login/login.html" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Login</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
+  </div> -->
+
+  <div id="header">
+    <div class="header-content">
+      <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
+      <div class="direct-container">
+        <a href="../login/login.html" class="direct-link"><i class="fa fa-fw fa-sign-in "></i>LOGIN</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
   </div>
 
-  <div class="register2 form-body">
-    <div class="register2 form-content">
-      <div class="register2 form-title">
+  <div class="register2 user-profile form-body">
+    <div class="register2 user-profile form-content">
+      <div class="register2 user-profile form-title">
         <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
         <h2>UIT Bank</h2>
       </div>
 
-      <form class="register2 form-section" action="../db/register.php" method="post" onsubmit="return checkAll()" >
+      <form class="register2 user-profile form-section" action="../db/register.php" method="post" onsubmit="return checkAll()" >
         <fieldset>
           <legend>Register</legend>
-          <div class="register2 inner-form first-block">
-            <div class="register2 block-item">
+          <div class="register2 user-profile inner-form first-block">
+            <div class="register2 user-profile block-item">
               <select class="question" id="acc_type" name="acc_type" required autocomplete="off">
                 <option selected disabled>Your Account Type</option>
                 <option value="saving">Saving Account</option>
@@ -44,28 +56,28 @@
           </div>
 
 
-          <div class="register2 personal-in4 inner-form second-block">
-            <div class="register2 first inner-block">
-              <div class="register2 block-item block-column">
+          <div class="register2 user-profile personal-in4 inner-form second-block">
+            <div class="register2 user-profile first inner-block">
+              <div class="register2 user-profile block-item block-column">
                 <input type="text" name="person_id" oninput="checkPid()" class="question" id="person_id" required autocomplete="off" />
                 <label for="person_id"><span>Personal ID</span></label>
                 <div style="color: red;" id="msgPid"></div>
               </div>
 
-              <div class="register2 block-item block-column">
+              <div class="register2 user-profile block-item block-column">
                 <input type="text" name="phone" oninput="checkPhone()" class="question" id="phone" required autocomplete="off" />
                 <label for="phone"><span>Mobile Number*</span></label>
                 <div style="color: red;" id="msgPhone"></div>
               </div>
             </div>
 
-            <div class="register2 second inner-block">
-              <div class="register2 block-item block-column">
+            <div class="register2 user-profile second inner-block">
+              <div class="register2 user-profile block-item block-column">
                 <input type="date" name="DoB" class="question" id="DoB" min="1920-01-01" max="2004-12-31" required autocomplete="off" />
                 <label for="DoB"><span>Date of birth*</span></label>
               </div>
 
-              <div class="register2 block-item block-column">
+              <div class="register2 user-profile block-item block-column">
                 <select name="gender" id="gender" class="gender  question" required autocomplete="off">
                   <option value ="" selected disabled>Choose your gender</option>
                   <option value="1">Male</option>
@@ -77,40 +89,40 @@
             </div>
           </div>
 
-          <div class="register2 inner-form">
-            <div class="register2 block-item">
+          <div class="register2 user-profile inner-form">
+            <div class="register2 user-profile block-item">
               <input type="text" name="address" oninput="checkAddr()" class="question" id="address" required autocomplete="off" />
               <label for="address"><span>Address*</span></label>
               <div style="color: red;" id="msgAddr"></div>
             </div>
 
-            <div class="register2 inner-block">
-              <div class="register2 block-item block-column">
+            <div class="register2 user-profile inner-block">
+              <div class="register2 user-profile block-item block-column">
                 <input type="text" name="district" oninput="checkDistrict()" class="question" id="district" required autocomplete="off" />
                 <label for="district"><span>District*</span></label>
                 <div style="color: red;" id="msgDistrict"></div>
               </div>
 
-              <div class="register2 block-item block-column">
+              <div class="register2 user-profile block-item block-column">
                 <input type="text" name="city" oninput="checkCity()" class="question" id="city" required autocomplete="off" />
                 <label for="city"><span>City*</span></label>
                 <div style="color: red;" id="msgCity"></div>
               </div>
             </div>
 
-            <div class="register2 inner-block">
-              <div class="register2 block-item block-column">
+            <div class="register2 user-profile inner-block">
+              <div class="register2 user-profile block-item block-column">
                 <input type="text" name="country" oninput="checkCountry()" class="question" id="country" required autocomplete="off" />
                 <label for="country"><span>Country*</span></label>
               </div>
-              <div class="register2 block-item block-column">
+              <div class="register2 user-profile block-item block-column">
                 <input type="text" name="nationality" oninput="checkNationality()" class="question" id="nationality" required autocomplete="off" />
                 <label for="nationality"><span>Nationality*</span></label>
               </div>
             </div>
           </div>
 
-          <input class="register2 form-submit" type="submit" name="submit" value="REGISTER">
+          <input class="register2 user-profile form-submit" type="submit" name="submit" value="REGISTER">
 
         </fieldset>
       </form>

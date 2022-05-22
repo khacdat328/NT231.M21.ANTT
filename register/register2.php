@@ -13,8 +13,8 @@ $_SESSION['password'] = $g11_password;
 <html>
 
 <head>
-  <title>Singhal Bank</title>
-  <link rel="icon" href="../img/l.png" type="image/x-icon">
+  <title>UIT Bank</title>
+  <link rel="icon" href="../asset/img/logo-uit.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/response.css">
@@ -134,14 +134,28 @@ $_SESSION['password'] = $g11_password;
 
 <body>
 
-  <div class="topnav" id="myTopnav">
-    <img src="../img/lg.png" height="44" width="204.8">
-    <a href="../index.html" class="active"><i class="fa fa-fw fa-home "></i>Home</a>
-    <a href="../login/login.html" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Login</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
+  <div id="header">
+    <div class="header-content">
+      <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
+      <div class="direct-container">
+        <a href="../login/login.html" class="direct-link"><i class="fa fa-fw fa-sign-in "></i>LOGIN</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
   </div>
+
+  <div id="header">
+    <div class="header-content">
+      <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
+      <a href="../login/login.html" class="direct-link"><i class="fa fa-fw fa-sign-in "></i>Login</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+
   <div class="register2 form-body">
     <div class="register2 form-content">
       <div class="register2 form-title">
