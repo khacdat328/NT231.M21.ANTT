@@ -11,15 +11,6 @@
 </head>
 
 <body>
-  <!-- <div class="topnav" id="myTopnav">
-    <img src="../asset/img/banner_0.png" height="48">
-    <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="48"></a>
-    <a href="../register/new_register.html" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Sign Up</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div> -->
-
   <div id="header">
     <div class="header-content">
       <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
@@ -50,17 +41,17 @@
           <div class="login input-container">
             <!-- <input type="text" name="id" class="question" id="id" placeholder="User ID" required autocomplete="off" /> -->
             <input type="text" name="id" oninput="checkEmail()" placeholder="User ID" class="question" id="id" required
-              autocomplete="off" />
+              autocomplete="off" style="margin: 1px 0" />
             <!-- <label for="id"><span>Your email</span></label> -->
-            <div style="color: red;" id="msgEmail"></div>
+            <div style="font-size:12px; text-align: end; color: red; height: 18px;" id="msgEmail"></div>
           </div>
 
           <div class="login input-container">
             <!-- <input type="password" name="password" class="question" id="password" placeholder="password" required
               autocomplete="off" /> -->
             <input type="password" name="password" oninput="checkPwd()" placeholder="Password" class="question"
-              id="password" required autocomplete="off" />
-            <div style="color: red;" id="msgPwd"></div>
+              id="password" required autocomplete="off" style="margin:1px 0" />
+            <div style="font-size:12px; text-align: end; color: red; height: 18px;" id="msgPwd"></div>
           </div>
           <input type="submit" name="submit" class="form-submit" value="Submit">
           <a href="../register/register.php" class="register-link" onmouseover="this.style.color = 'red'"
@@ -76,15 +67,8 @@
 
   <script>
     var filter_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    var filter_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#\$%\^&\*]).{8,}$/;
-    function myFunction() {
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
-      } else {
-        x.className = "topnav";
-      }
-    }
+    var filter_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[.!@#\$%\^&\*]).{8,}$/;
+    
     function checkEmail() {
       var email = document.getElementById("id").value;
       if (!filter_email.test(email)) {
@@ -114,18 +98,6 @@
         return false;
       }
     }
-    /*$(document).ready(function() {
-            function disableBack() { window.history.forward() }
-    
-            window.onload = disableBack();
-            window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
-        });*/
-    /*if ( typeof(Storage) !== 'undefined') {
-        // Khởi tạo sesionStorage
-        sessionStorage.setItem('login',true);
-    } else {
-        alert('Trình duyệt của bạn không hỗ trợ!');
-    }*/
   </script>
 </body>
 

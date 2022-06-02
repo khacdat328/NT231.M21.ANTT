@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-<title>UIT Bank</title>
-    <link rel="icon" href="../asset/img/logo-uit.png" type="image/x-icon">
+  <title>UIT Bank</title>
+  <link rel="icon" href="../asset/img/logo-uit.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/response.css">
@@ -139,53 +139,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="direct-container">
         <a href="../login/login.html" class="direct-link"><i class="fa fa-fw fa-sign-in "></i>LOGIN</a>
       </div>
-      
+
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
       </a>
     </div>
   </div>
-  
-  <div class="register1 form-content">
-    <div class="register1 form-title">
-      <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
-      <h2>UIT Bank</h2>
+
+  <div class="register1 form-body">
+    <div class="register1 form-content">
+      <div class="register1 form-title">
+        <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
+        <h2>UIT Bank</h2>
+      </div>
+
+      <form name="Register" class="register1 form-section" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+        <fieldset>
+          <legend>Register</legend>
+          <input type="text" name="firstname" class="question" oninput="checkfName()" id="firstname" required autocomplete="off">
+          <label style="margin-bottom: 10px;" for="firstname"><span>First Name*</span></label>
+          <div style="color: red;" id="msgName1"></div>
+
+          <input type="text" name="lastname" class="question" oninput="checklName()" id="lastname" required autocomplete="off">
+          <label style="margin-bottom: 10px;" for="lastname"><span>Last Name*</span></label>
+          <div style="color: red;" id="msgName2"></div>
+
+
+          <input type="text" name="email" class="question" oninput="checkEmail()" id="email" required autocomplete="off">
+          <label style="margin-bottom: 10px;" for="email"><span>Email Address*</span></label>
+          <div style="color: red;" id="msgEmail"></div>
+
+          <input type="password" name="password" oninput="checkPwd()" class="question" id="password" required autocomplete="off">
+          <label style="margin-bottom: 10px;" for="password">
+            <span>Password*</span>
+          </label>
+          <div style="color: red;" id="msgPwd"></div>
+
+          <input id="password_confirmation" class="question" type="password" oninput="validate()" name="password_confirmation" required autocomplete="off">
+          <label style="margin-bottom: 10px;" for="password_confirmation">
+            <span>Confirm Password*</span>
+          </label>
+          <div style="color: red;" id="msg"></div>
+
+          <input class="register1 form-submit" id="register1-submit" type="submit" name="submit" value="Submit">
+          <a class="register1 login-link" href="../login/login.html" onmouseover="this.style.color = 'red'" onmouseleave="this.style.color = 'blue'">
+            Already had an account?
+          </a>
+        </fieldset>
+      </form>
     </div>
-    
-    <form name="Register" class="register1 form-section" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-      <fieldset>
-        <legend>Register</legend>
-        <input type="text" name="firstname" class="question" oninput="checkfName()" id="firstname" required autocomplete="off">
-        <label style="margin-bottom: 10px;" for="firstname"><span>First Name*</span></label>
-        <div style="color: red;" id="msgName1"></div>
-
-        <input type="text" name="lastname" class="question" oninput="checklName()" id="lastname" required autocomplete="off">
-        <label style="margin-bottom: 10px;" for="lastname"><span>Last Name*</span></label>
-        <div style="color: red;" id="msgName2"></div>
-
-
-        <input type="text" name="email" class="question" oninput="checkEmail()" id="email" required autocomplete="off">
-        <label style="margin-bottom: 10px;" for="email"><span>Email Address*</span></label>
-        <div style="color: red;" id="msgEmail"></div>
-
-        <input type="password" name="password" oninput="checkPwd()" class="question" id="password" required autocomplete="off">
-        <label style="margin-bottom: 10px;" for="password">
-          <span>Password*</span>
-        </label>
-        <div style="color: red;" id="msgPwd"></div>
-
-        <input id="password_confirmation" class="question" type="password" oninput="validate()" name="password_confirmation" required autocomplete="off">
-        <label style="margin-bottom: 10px;" for="password_confirmation">
-          <span>Confirm Password*</span>
-        </label>
-        <div style="color: red;" id="msg"></div>
-
-        <input class="register1 form-submit" id="register1-submit" type="submit" name="submit" value="Submit">
-        <a class="register1 login-link" href="../login/login.html" onmouseover="this.style.color = 'red'" onmouseleave="this.style.color = 'blue'">
-          Already had an account?
-        </a>
-      </fieldset>
-    </form>
   </div>
 
 </body>
