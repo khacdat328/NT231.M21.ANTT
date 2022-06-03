@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UIT Bank</title>
+    <link rel="icon" href="../asset/img/logo-uit.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/response.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <div class="header-content">
+            <div class="home-direct">
+                <a href="">
+                    <img src="../asset/img/banner_0.png" alt="" height="60">
+                </a>
+            </div>
+            <div class="direct-container">
+                <a class="direct-link" href="dashboard.php"><i class="fa fa-fw fa-calculator "></i>Dashboard</a>
+                <a class="direct-link" href="profile.php" class="active"><i
+                        class="fa fa-fw fa-id-card-o "></i>Profile</a>
+                <a class="direct-link" href="transfer.php"><i class="fa fa-fw fa-cogs "></i>Transfer</a>
+                <a class="direct-link" href="transactions.php"><i class="fa fa-fw fa-file-text "></i>Transactions</a>
+            </div>
+            <div class="direct-container">
+                <a class="direct-link " href="logout.php"><i class="fa fa-fw fa-sign-out "></i>Logout</a>
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="transfer1 form-body">
+        <div class="transfer1 transfer progressBar-container">
+            <div id="progress">
+                <div id="progress-bar"></div>
+                <ul id="progress-num">
+                    <li class="step active">1</li>
+                    <li class="step">2</li>
+                    <li class="step">3</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="transfer2 transfer form-content">
+            <div class="register2 user-profile form-title">
+                <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
+                <h2>UIT Bank</h2>
+            </div>
+
+            <form action="" class="form-section transfer2" id="">
+                <div class="inner-form transfer2 transfer">
+                    <div class="tab">
+                        <div class="transfer2 transfer inner-block input-account">
+                            <div class="transfer2 block-item block-column user-account">
+                                <input type="text" name="account_noo" placeholder=" " oninput="checkAccount()"
+                                    class="transfer2 transfer question" id="account_noo" required autocomplete="off" />
+                                <label for="account_noo"><span>Account Number</span></label>
+                            </div>
+                            <div class="transfer2block-item block-column">
+                                <input type="button" value="Check" name="findName" class="transfer2 transfers input-btn"
+                                    id="findName" />
+                            </div>
+                        </div>
+
+                        <div class="transfer2 block-item block-column account-name">
+                            <h3 class="account-name-display">CHAU KHAC DAT</h3>
+                        </div>
+                    </div>
+
+                    <div class="transfer2 block-item block-column next-btn">
+                        <input type="submit" value="Previous" name="Previous"
+                            class="transfer2 transfer input-next-btn input-btn" id="Previous">
+                        <input type="submit" value="Next" name="Next"
+                        class="transfer2 transfer input-next-btn input-btn" id="Next">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="../asset/animation.js"></script>
+</body>
+
+</html>

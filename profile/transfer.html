@@ -30,13 +30,13 @@
     function checkAccount() {
       var account = document.getElementById("account_noo").value;
       if (!filter_account.test(account)) {
-        document.getElementById("msgAccount").innerHTML = "Invalid account!";
+        document.getElementById("account_noo").setCustomValidity("Invalid account number!");
+        document.getElementById("account_noo").reportValidity();
         return false;
       }
       else {
-        document.getElementById("msgAccount").innerHTML = "";
+        document.getElementById("account_noo").setCustomValidity("")
         return true;
-
       }
     }
     function checkAll() {
@@ -50,7 +50,6 @@
 </head>
 
 <body>
-
   <div id="header">
     <div class="header-content">
       <div class="home-direct">
@@ -63,10 +62,9 @@
         <a class="direct-link" href="profile.php" class="active"><i class="fa fa-fw fa-id-card-o "></i>Profile</a>
         <a class="direct-link" href="transfer.php"><i class="fa fa-fw fa-cogs "></i>Transfer</a>
         <a class="direct-link" href="transactions.php"><i class="fa fa-fw fa-file-text "></i>Transactions</a>
-        <a class="direct-link" href="limit.php"><i class="fa fa-fw fa-sliders "></i>Set Limit</a>
       </div>
       <div class="direct-container">
-        <a class="direct-link " href="logout.php" style="float: right"><i class="fa fa-fw fa-sign-out "></i>Logout</a>
+        <a class="direct-link " href="logout.php"><i class="fa fa-fw fa-sign-out "></i>Logout</a>
       </div>
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -74,47 +72,38 @@
     </div>
   </div>
 
-  <div class="transfer form-body">
-    <div class="transfer transfer-content">
-      
+  <div class="transfer1 form-body">
+    <div class="transfer1 transfer form-content">
+      <div class="register2 user-profile form-title">
+        <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
+        <h2>UIT Bank</h2>
+      </div>
+
+      <form method="POST" onsubmit ="return checkAll()" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-section transfer1">
+        <div class="tab inner-form transfer1 transfer">
+          <div class="transfer1 transfer inner-block input-account">
+            <div class="transfer1 block-item block-column user-account">
+              <input type="text" name="account_noo" placeholder=" " oninput="checkAccount()" class="transfer1 transfer question"
+                id="account_noo" required autocomplete="off" />
+              <label for="account_noo"><span>Account Number</span></label>
+            </div>
+            <div class="transfer1block-item block-column">
+              <input type="button" value="Check" name="findName" class="transfer1 transfer input-btn" id="findName" />
+            </div>
+          </div>
+
+          <div class="transfer1 block-item block-column account-name">
+            <h3 class="account-name-display">CHAU KHAC DAT</h3>
+          </div>
+
+          <div class="transfer1 block-item block-column next-btn">
+            <input type="submit" value="Next" name="Next" class="transfer1 transfer input-next-btn input-btn" id="Next">
+          </div>
+        </div>
+
+      </form>
     </div>
   </div>
-
-  <center>
-    <div style="background-color: #4CAF50; height: 45px; width: 100%; color: white; ">
-      <h1>Transfer Money</h1>
-    </div>
-    <br><br>
-    <form method="POST" onsubmit="return checkAll()" action="">
-      <table width="40%">
-        <tr>
-          <td>
-            <input type="text" name="account_noo" oninput="checkAccount()" class="question" id="account_noo" required
-              autocomplete="off" />
-            <label for="account_noo"><span>Account Number</span></label>
-            <div style="color: red;" id="msgAccount"></div>
-          </td>
-        </tr>
-      </table>
-      <table width="40%">
-        <tr>
-          <td>
-            <input type="text" name="amount" class="question" id="amount" required autocomplete="off"
-              oninput="validate()" />
-            <label for="amount"><span>Amount(in Rs.)</span></label>
-            <div style="color: red;" id="msg"></div>
-          </td>
-        </tr>
-      </table>
-      <br>
-      <table width="80%">
-        <tr>
-          <td align="right"><input type="submit" name="submit" value="PAY NOW"
-              style="height: 40px; width: 150px; font-size: 20px; color: white; background-color: #4CAF50"></td>
-        </tr>
-      </table>
-    </form>
-  </center>
 </body>
 
 </html>
