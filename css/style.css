@@ -8,6 +8,7 @@ html {
   scroll-behavior: smooth;
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -619,14 +620,14 @@ input[type="button"].question:valid {
 }
 .transfer .next-btn {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 
 .transfer1 .input-next-btn {
   width: fit-content;
 }
 
-.transfer1.input-account {
+.transfer.input-account {
   border-bottom: 1px solid gray;
 }
 .block-item.user-account {
@@ -655,7 +656,7 @@ input[type="button"].question:valid {
   background: linear-gradient(
     90deg,
     rgba(105, 151, 214, 1) 0%,
-    rgba(105, 209, 233, 1) 100%
+    rgba(105, 209, 233, 1) 61%
   );
 }
 /* TAB */
@@ -721,11 +722,214 @@ input[type="button"].question:valid {
   z-index: 1;
 }
 
-.active-tab{
+.active-tab {
   display: none;
 }
 #progress-num .step.active {
   border-color: lightseagreen;
   background-color: lightseagreen;
   color: #fff;
+}
+
+
+.transfer2.form-content{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 25px;
+}
+.arrow-container {
+  position: relative;
+  padding: 10px 0;
+  background-color: white;
+  width: 70%;
+  /* margin: auto; */
+  max-width: 600px;
+  /* width: fit-content; */
+  border-radius: 10px;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.transfer2.cover {
+  width: 100%;
+  margin: auto;
+  /* margin-top: 10px; */
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: 100px;
+  overflow: hidden;
+}
+
+.transfer2.infor-container {
+  height: 100%;
+  color: white;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  margin: 0px 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.transfer2.sender {
+  width: 45%;
+  /* min-width: 300px; */
+  justify-content: start;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  z-index: 1;
+  /* background: rgb(21, 165, 180); */
+  background: linear-gradient(
+    90deg,
+    rgba(0,102,173,1) 0%,
+    rgba(0,190,174,1) 60%
+  );
+}
+
+.transfer2.receiver {
+  width: 50%;
+  /* min-width: 350px; */
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  justify-content: end;
+  z-index: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,190,174,1) 50%,
+    rgba(0,102,173,1) 100%
+  );
+}
+
+.sender.content {
+  text-align: start;
+}
+
+.receiver.content {
+  text-align: end;
+}
+
+.transfer2 .content {
+  flex: 1;
+  padding: 10px 15px;
+  width: fit-content;
+}
+
+.transfer2.sender::after,
+.transfer2.receiver::after {
+  position: absolute;
+  /* top: 200px; */
+  /* left: -30px; */
+  content: "";
+  transform: rotate(45deg);
+  border-radius: 10px;
+}
+
+.transfer2.sender::after {
+  right: -30px;
+  z-index: 0;
+  width: 100px;
+  height: 100px;
+  /* background: rgb(21, 165, 180); */
+  background: linear-gradient(
+    45deg,
+    rgba(0,190,174,1) 60%,
+    rgba(33, 199, 184, 1) 100%
+  );
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+}
+
+
+
+.transfer2.sender::before {
+  position: absolute;
+  /* top: 200px; */
+  /* left: -30px; */
+  content: "";
+  width: 100px;
+  height: 0;
+  width: 0;
+  height: 0;
+
+  transform: rotate(45deg);
+  border-radius: 10px;
+  z-index: 0;
+  right: -40px;
+  /* border: 50px solid blue; */
+}
+
+.transfer2.receiver::after {
+  left: -50px;
+  border: 50px solid white;
+  /* border-left-style: ; */
+  border-left-color: transparent;
+
+  border-bottom-color: transparent;
+  z-index: -1;
+}
+
+.transfer2.form-content{
+  margin: 10px 0;
+}
+
+.transfer2.amount-unit{
+  margin-top: 10px;
+}
+.transfer2.unit{
+  font-size: 16px;
+  font-weight: 700;
+  color:#4ba4d1;
+  margin:0;
+ 
+}
+
+.transfer2.remark{
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.transfer2.first{
+  margin-bottom: 30px;
+}
+
+.modal-body {
+  display: none;
+  justify-content: center;
+  position: fixed;
+  top: 100px;
+  right: 0;
+  left: 0;
+  /* bottom: 0; */
+}
+
+.modal-body.open{
+  display: flex;
+  
+}
+
+.modal-content{
+  background-color: white;
+  position: relative;
+  animation: modalFadeIn ease 0.6s;
+}
+.modal.amount-unit{
+  flex:1;
+  text-align: start;
+}
+
+.modal.user-account input{
+  flex:2;
+  text-align: end;
+}
+
+@keyframes modalFadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-140px);
+  }
+  to {
+      opacity: 1  ;
+      transform: translateY(0);
+  }
 }

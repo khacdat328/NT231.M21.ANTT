@@ -7,9 +7,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/response.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script>
+        var filter_account = /^[0-9]{10}$/;
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        function validate() {
+            var v = document.getElementById("amount").value;
+            if (isNaN(v)) {
+                document.getElementById("msg").innerHTML = "Should be a Number";
+            }
+            else {
+                document.getElementById("msg").innerHTML = "";
+            }
+        }
+        function checkAccount() {
+            var account = document.getElementById("amount").value;
+            if (!filter_account.test(account)) {
+                document.getElementById("amount").setCustomValidity("Invalid account number!");
+                document.getElementById("amount").reportValidity();
+                return false;
+            }
+            else {
+                document.getElementById("amount").setCustomValidity("")
+                return true;
+            }
+        }
+        function checkAll() {
+            if (checkAccount() && validate()) { return true; }
+            else {
+                alert("Please enter all information correctly!");
+                return false;
+            }
+        }
 
+        // const modal = document.querySelector('.modal-body')
+        // const NextBtn = document.querySelector('#Next')
+        // const modelContent = document.querySelector('.modal-content')
+        // function showBuyTicket () {
+        //     modal.classList.add('open')
+        // }
+
+        // function RemoveBuyTicket () {
+        //     modal.classList.remove('open')
+        // }
+        // // NextBtn.addEventListener("click",showBuyTicket)
+        // modal.addEventListener('click', RemoveBuyTicket)
+
+        // modelContainer.addEventListener('click', function(event) {
+        //     event.stopPropagation()
+        // })
     </script>
 </head>
 
@@ -37,17 +90,23 @@
         </div>
     </div>
 
-    <div class="transfer1 form-body">
-        <div class="transfer1 transfer progressBar-container">
-            <div id="progress">
-                <div id="progress-bar"></div>
-                <ul id="progress-num">
-                    <li class="step active">1</li>
-                    <li class="step">2</li>
-                    <li class="step">3</li>
-                </ul>
-            </div>
 
+    <div class="transfer2 form-body">
+        <div class="transfer2 arrow-container">
+            <div class="transfer2 cover">
+                <div class="transfer2 sender infor-container">
+                    <div class="sender content">
+                        <h3>Châu Khắc Đạt</h3>
+                        <h4>1000.000 VNĐ</h4>
+                    </div>
+                </div>
+                <div class="transfer2 receiver infor-container">
+                    <div class="receiver content">
+                        <h3>Châu Khắc Đạt</h3>
+                        <h4>1234567890</h4>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="transfer2 transfer form-content">
             <div class="register2 user-profile form-title">
@@ -55,39 +114,118 @@
                 <h2>UIT Bank</h2>
             </div>
 
-            <form action="" class="form-section transfer2" id="">
-                <div class="inner-form transfer2 transfer">
-                    <div class="tab">
-                        <div class="transfer2 transfer inner-block input-account">
-                            <div class="transfer2 block-item block-column user-account">
-                                <input type="text" name="account_noo" placeholder=" " oninput="checkAccount()"
-                                    class="transfer2 transfer question" id="account_noo" required autocomplete="off" />
-                                <label for="account_noo"><span>Account Number</span></label>
-                            </div>
-                            <div class="transfer2block-item block-column">
-                                <input type="button" value="Check" name="findName" class="transfer2 transfers input-btn"
-                                    id="findName" />
-                            </div>
+            <form method="POST" onsubmit="" action="" class="form-section transfer2">
+                <div class="tab inner-form transfer2 transfer">
+                    <div class="transfer2 first transfer inner-block input-account">
+                        <div class="transfer2 block-item block-column user-account">
+                            <input type="text" name="amount" placeholder=" " oninput="checkAccount()"
+                                class="transfer2 transfer question" id="amount" required autocomplete="off" />
+                            <label for="amount"><span>Amount</span></label>
                         </div>
-
-                        <div class="transfer2 block-item block-column account-name">
-                            <h3 class="account-name-display">CHAU KHAC DAT</h3>
+                        <div class="transfer2 block-item block-column amount-unit">
+                            <span class="transfer2 transfer unit">VND</span>
                         </div>
                     </div>
 
+
+                    <!-- Echo vào cái value -->
+                    <div class="transfer2 transfer second inner-block input-account">
+                        <div class="transfer2 block-item block-column user-account">
+                            <input type="text" min="1" max="250" name="remark" oninput=""
+                                class="transfer2 transfer question remark" value="Chau Khac Dat chuyen tien" id="remark"
+                                required autocomplete="off" />
+                            <label for="remark"><span>Transaction remark</span></label>
+                        </div>
+
+                    </div>
+
                     <div class="transfer2 block-item block-column next-btn">
-                        <input type="submit" value="Previous" name="Previous"
-                            class="transfer2 transfer input-next-btn input-btn" id="Previous">
                         <input type="submit" value="Next" name="Next"
-                        class="transfer2 transfer input-next-btn input-btn" id="Next">
+                            class="transfer2 transfer input-next-btn input-btn" id="Next">
                     </div>
                 </div>
 
             </form>
+
+            
         </div>
+
+        <!-- <div class="tranfer2 transfer modal-body">
+            <div class="modal-content">
+                <div class="tranfer2 tranfer modal-header">
+                    <h3>Transaction Confirmation</h3>
+                </div>
+
+                <form method="POST" onsubmit="" action="" class="form-section transfer2">
+                    <div class="tab inner-form transfer2 transfer">
+                        <div class="transfer2 first transfer inner-block input-account">
+                            <div class="transfer2 block-item block-column amount-unit modal">
+                                <span class="transfer2 transfer unit">Debit account</span>
+                            </div>
+                            <div class="transfer2 block-item block-column user-account modal">
+                                <input type="text" name="amount" value="" class="transfer2 transfer question"
+                                    id="debit-account" required autocomplete="off" />
+                            </div>
+                        </div>
+
+                        <div class="transfer2 first transfer inner-block input-account">
+                            <div class="transfer2 block-item block-column amount-unit modal">
+                                <span class="transfer2 transfer unit">Beneficiary account</span>
+                            </div>
+                            <div class="transfer2 block-item block-column user-account modal">
+                                <input type="text" name="amount" class="transfer2 transfer question" id="amount"
+                                    required autocomplete="off" />
+                            </div>
+                        </div>
+
+
+                        <div class="transfer2 first transfer inner-block input-account">
+                            <div class="transfer2 block-item block-column amount-unit modal">
+                                <span class="transfer2 transfer unit">Beneficiary name</span>
+                            </div>
+                            <div class="transfer2 block-item block-column user-account modal">
+                                <input type="text" name="amount" class="transfer2 transfer question" id="amount"
+                                    required autocomplete="off" />
+                            </div>
+                        </div>
+
+                        <div class="transfer2 first transfer inner-block input-account">
+                            <div class="transfer2 block-item block-column amount-unit modal">
+                                <span class="transfer2 transfer unit">Amount</span>
+                            </div>
+                            <div class="transfer2 block-item block-column user-account modal">
+                                <input type="text" name="amount" class="transfer2 transfer question" id="amount"
+                                    required autocomplete="off" />
+                            </div>
+                        </div>
+
+                        <div class="transfer2 first transfer inner-block input-account">
+                            <div class="transfer2 block-item block-column amount-unit modal">
+                                <span class="transfer2 transfer unit">Transaction date</span>
+                            </div>
+                            <div class="transfer2 block-item block-column user-account modal">
+                                <input type="text" name="amount" class="transfer2 transfer question" id="amount"
+                                    required autocomplete="off" />
+                            </div>
+                        </div>
+
+                        <div class="transfer2 first transfer inner-block input-account">
+                            <div class="transfer2 block-item block-column amount-unit modal">
+                                <span class="transfer2 transfer unit">Content</span>
+                            </div>
+                            <div class="transfer2 block-item block-column user-account modal">
+                                <input type="text" name="amount" class="transfer2 transfer question" id="amount"
+                                    required autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div> -->
     </div>
 
-    <script src="../asset/animation.js"></script>
+
 </body>
 
 </html>
