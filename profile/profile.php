@@ -1,22 +1,29 @@
 <?php
 session_start();
-$g11_account_no = $_SESSION['account_no'];
-$g11_con = mysqli_connect("localhost","root","12345678","bank");
-$g11_result = mysqli_query($g11_con, "SELECT * FROM register WHERE account_no = '$g11_account_no'");
-$g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
-$g11_firstname = $g11_row['firstname'];
-$g11_lastname = $g11_row['lastname'];
-$g11_email = $g11_row['email'];
-$g11_phone = $g11_row['phone'];
-$g11_gender = $g11_row['gender'];
-$g11_district = $g11_row['district'];
-$g11_birthday = $g11_row['birthday'];
-$g11_person_id = $g11_row['person_id'];
-$g11_gender = $g11_row['gender'];
-$g11_address = $g11_row['address'];
-$g11_city = $g11_row['city'];
-$g11_country = $g11_row['country'];
-$g11_nationality = $g11_row['nationality'];
+if(isset($_SESSION['account_no'])){
+	$g11_account_no = $_SESSION['account_no'];
+	$g11_con = mysqli_connect("localhost","root","root","bank");
+	$g11_result = mysqli_query($g11_con, "SELECT * FROM register WHERE account_no = '$g11_account_no'");
+	$g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+	$g11_firstname = $g11_row['firstname'];
+	$g11_lastname = $g11_row['lastname'];
+	$g11_email = $g11_row['email'];
+	$g11_phone = $g11_row['phone'];
+	$g11_gender = $g11_row['gender'];
+	$g11_district = $g11_row['district'];
+	$g11_birthday = $g11_row['birthday'];
+	$g11_person_id = $g11_row['person_id'];
+	$g11_gender = $g11_row['gender'];
+	$g11_address = $g11_row['address'];
+	$g11_city = $g11_row['city'];
+	$g11_country = $g11_row['country'];
+	$g11_nationality = $g11_row['nationality'];
+}
+else {
+	$message = "You do not have access to this page.";
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	header("refresh:0;url=../login/login.php");
+}
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,35 +1,42 @@
 <?php
 session_start();
-$g11_account_no = $_SESSION['account_no'];
-$g11_con = mysqli_connect("localhost","root","12345678","bank");
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-  $g11_old_password = $_POST['old_password'];
-  $g11_new_password = $_POST['new_password'];
-  $g11_result = mysqli_query($g11_con, "SELECT * FROM login WHERE account_no = '$g11_account_no'");
-  $g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
-  $g11_password = $g11_row['pwd'];
-  $g11_email = $g11_row['id'];
-  $g11_secretSalt = "g11.uit.nt213.m21.antt";
-  $g11_message = $g11_secretSalt.$g11_email;
-  $g11_hashed = md5($g11_message);
-  $g11_encryptionMethod = "AES-256-CBC"; 
+if(isset($_SESSION['account_no'])){
+	$g11_account_no = $_SESSION['account_no'];
+	$g11_con = mysqli_connect("localhost","root","root","bank");
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+	  $g11_old_password = $_POST['old_password'];
+	  $g11_new_password = $_POST['new_password'];
+	  $g11_result = mysqli_query($g11_con, "SELECT * FROM login WHERE account_no = '$g11_account_no'");
+	  $g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+	  $g11_password = $g11_row['pwd'];
+	  $g11_email = $g11_row['id'];
+	  $g11_secretSalt = "g11.uit.nt213.m21.antt";
+	  $g11_message = $g11_secretSalt.$g11_email;
+	  $g11_hashed = md5($g11_message);
+	  $g11_encryptionMethod = "AES-256-CBC"; 
 
-//To encrypt
-$g11_old_crypt = openssl_encrypt($g11_hashed, $g11_encryptionMethod, $g11_old_password);
-  if($g11_password == $g11_old_crypt) {
-    $g11_secretSalt = "g11.uit.nt213.m21.antt";
-    $g11_message = $g11_secretSalt.$g11_email;
-    $g11_hashed = md5($g11_message);
-    $g11_encryptionMethod = "AES-256-CBC"; 
+	//To encrypt
+	$g11_old_crypt = openssl_encrypt($g11_hashed, $g11_encryptionMethod, $g11_old_password);
+	  if($g11_password == $g11_old_crypt) {
+	    $g11_secretSalt = "g11.uit.nt213.m21.antt";
+	    $g11_message = $g11_secretSalt.$g11_email;
+	    $g11_hashed = md5($g11_message);
+	    $g11_encryptionMethod = "AES-256-CBC"; 
 
-//To encrypt
-$g11_new_crypt = openssl_encrypt($g11_hashed, $g11_encryptionMethod, $g11_new_password);
-    $g11_c = mysqli_query($g11_con, "update login set pwd = '$g11_new_crypt' where account_no = '$g11_account_no';");
-    header("refresh:0;url=success.html");
-  }
-  else {
-    header("refresh:0;url=passwordW.php");
-  }
+	//To encrypt
+	$g11_new_crypt = openssl_encrypt($g11_hashed, $g11_encryptionMethod, $g11_new_password);
+	    $g11_c = mysqli_query($g11_con, "update login set pwd = '$g11_new_crypt' where account_no = '$g11_account_no';");
+	    header("refresh:0;url=success.html");
+	  }
+	  else {
+	    header("refresh:0;url=passwordW.php");
+	  }
+	}
+}
+else {
+	$message = "You do not have access to this page.";
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	header("refresh:0;url=../login/login.php");
 }
 ?>
 <!DOCTYPE html>

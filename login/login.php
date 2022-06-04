@@ -1,3 +1,57 @@
+<?php
+if(isset($_SESSION['account_no'])){
+	header("refresh:0;url=../profile/dashboard.php");
+}
+else{
+	$g11_con = mysqli_connect("localhost","root","root","bank");
+	if (isset($_GET['verification'])) {
+        if (mysqli_num_rows(mysqli_query($g11_con, "SELECT * FROM register WHERE token='{$_GET['verification']}'")) > 0) {
+            $query = mysqli_query($g11_con, "UPDATE register SET token='', status='1' WHERE token='{$_GET['verification']}'");
+            
+            if ($query) {
+                echo"<script>alert('Account verification has been successfully completed.')</script>";
+                header("refresh:0;url=../login.php");
+                
+            }
+        } else {
+            header("refresh:0;url=../login.php");
+        }
+    }
+}
+if (isset($_POST['submit'])) {
+  $g11_con = mysqli_connect("localhost","root","root","bank");
+	$g11_id = $_POST['id'];
+	$g11_password = $_POST['password'];
+	$g11_secretSalt = "g11.uit.nt213.m21.antt";
+	$g11_message = $g11_secretSalt.$g11_id;
+	$g11_hashed = md5($g11_message);
+	$g11_encryptionMethod = "AES-256-CBC"; 
+
+	//To encrypt
+	$g11_crypt = openssl_encrypt($g11_hashed, $g11_encryptionMethod, $g11_password);
+	session_start();
+	$g11_result = mysqli_query($g11_con, "SELECT * FROM login WHERE id='$g11_id' && pwd='$g11_crypt'");
+  $g11_result2 = mysqli_query($g11_con,"SELECT * FROM register WHERE email='$g11_id'");
+	$g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+  $g11_row2 = mysqli_fetch_array($g11_result2,MYSQLI_ASSOC);
+	$g11_accno = $g11_row['account_no'];
+	$g11_count = mysqli_num_rows($g11_result);
+	if($g11_count==1)
+	{
+    if (empty($g11_row2['token']) && $g11_row2['status'] == 1 ) {
+      $_SESSION['account_no'] = $g11_accno;
+      header("refresh:0;url=../profile/dashboard.php");
+    } else {
+        echo"<script>alert('First verify your account and try again.')</script>";
+    }
+	}
+	else
+	{
+		header("refresh:0;url=../login/login.php");
+	}
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,7 +130,7 @@ function checkAll(){
     <div style="background-color: #4CAF50; height: 45px; width: 100%; align-items: center; color: white; "><h1>Login</h1></div>
   <br><br>
   <hr class="colorgraph">
-  <form action="../db/login.php" method="post" onsubmit ="return checkAll()">
+  <form method="post" onsubmit ="return checkAll()">
     <table cellspacing="25">
       <col width="80%">
       <tr>
@@ -95,6 +149,7 @@ function checkAll(){
       </tr>
       <tr>
         <td><a style="color: blue" onmouseover="this.style.color = 'red'" onmouseleave="this.style.color = 'blue'" href="../register/register.php">New User?</a></td>
+        <td><a style="color: blue" onmouseover="this.style.color = 'red'" onmouseleave="this.style.color = 'blue'" href="../profile/forgot-pwd.php">Forgot password?</a></td>
       </tr>
     </table>
     <hr class="colorgraph">

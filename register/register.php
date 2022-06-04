@@ -124,7 +124,7 @@ function next(){
 <div class="topnav" id="myTopnav">
   <img src="../img/lg.png" height="44" width="204.8">
   <a href="../index.html" class="active"><i class="fa fa-fw fa-home "></i>Home</a>
-  <a href="../login/login.html" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Login</a>
+  <a href="../login/login.php" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Login</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>

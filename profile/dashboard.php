@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['account_no'])){
 $g11_account_no = $_SESSION['account_no'];
-$g11_con = mysqli_connect("localhost","root","12345678","bank");
+$g11_con = mysqli_connect("localhost","root","root","bank");
 $g11_resultb = mysqli_query($g11_con, "SELECT * FROM balance WHERE account_no = '$g11_account_no'");
 $g11_resultr = mysqli_query($g11_con, "SELECT * FROM register WHERE account_no = '$g11_account_no'");
 $g11_rowb = mysqli_fetch_array($g11_resultb,MYSQLI_ASSOC);
@@ -12,13 +12,15 @@ $g11_online_limit = $g11_rowb['online_limit'];
 $g11_card_limit = $g11_rowb['card_limit'];
 $g11_firstname = $g11_rowr['firstname'];
 $g11_lastname = $g11_rowr['lastname'];
-echo'
+/*echo'
 	<script type="text/javascript">
         sessionStorage.setItem("login", true);
-        </script>';
+        </script>';*/
 }
 else {
-	header("refresh:0;url=../login/loginW.html");
+	$message = "You do not have access to this page.";
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	header("refresh:0;url=../login/login.php");
 }
 ?>
 <!DOCTYPE html>

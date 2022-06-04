@@ -1,36 +1,43 @@
 <?php
 session_start();
-$g11_account_no = $_SESSION['account_no'];
-$g11_con = mysqli_connect("localhost","root","12345678","bank");
-$g11_result = mysqli_query($g11_con, "SELECT * FROM register WHERE account_no = '$g11_account_no'");
-$g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
-$g11_firstname = $g11_row['firstname'];
-$g11_lastname = $g11_row['lastname'];
-/*$g11_email = $g111_row['email'];*/
-$g11_phone = $g11_row['phone'];
-$g11_birthday = $g11_row['birthday'];
-$g11_person_id = $g11_row['person_id'];
-$g11_gender = $g11_row['gender'];
-$g11_address = $g11_row['address'];
-$g11_district = $g11_row['district'];
-$g11_city = $g11_row['city'];
-$g11_country = $g11_row['country'];
-$g11_nationality = $g11_row['nationality'];
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-  $g11_firstname = $_POST['firstname'];
-  $g11_lastname = $_POST['lastname'];
-  /*$g11_email = $_POST['email'];*/
-  $g11_phone = $_POST['phone'];
-  $g11_birthday = $_POST['birthday'];
-  $g11_person_id = $_POST['person_id'];
-  $g11_gender = $_POST['gender'];
-  $g11_address = $_POST['address'];
-  $g11_district = $_POST['district'];
-  $g11_city = $_POST['city'];
-  $g11_country = $_POST['country'];
-  $g11_nationality = $_POST['nationality'];
-  $g11_c = mysqli_multi_query($g11_con, "update register set firstname = '$g11_firstname', lastname = '$g11_lastname', phone = '$g11_phone', birthday = '$g11_birthday', person_id = '$g11_person_id', gender = '$g11_gender', address = '$g11_address', district = '$g11_district', city = '$g11_city', country = '$g11_country', nationality = '$g11_nationality' where account_no = '$g11_account_no';");
-  if($g11_c) {header("refresh:0;url=profile.php"); } else { echo "no";}
+if(isset($_SESSION['account_no'])){
+	$g11_account_no = $_SESSION['account_no'];
+	$g11_con = mysqli_connect("localhost","root","root","bank");
+	$g11_result = mysqli_query($g11_con, "SELECT * FROM register WHERE account_no = '$g11_account_no'");
+	$g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+	$g11_firstname = $g11_row['firstname'];
+	$g11_lastname = $g11_row['lastname'];
+	/*$g11_email = $g111_row['email'];*/
+	$g11_phone = $g11_row['phone'];
+	$g11_birthday = $g11_row['birthday'];
+	$g11_person_id = $g11_row['person_id'];
+	$g11_gender = $g11_row['gender'];
+	$g11_address = $g11_row['address'];
+	$g11_district = $g11_row['district'];
+	$g11_city = $g11_row['city'];
+	$g11_country = $g11_row['country'];
+	$g11_nationality = $g11_row['nationality'];
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+	  $g11_firstname = $_POST['firstname'];
+	  $g11_lastname = $_POST['lastname'];
+	  /*$g11_email = $_POST['email'];*/
+	  $g11_phone = $_POST['phone'];
+	  $g11_birthday = $_POST['birthday'];
+	  $g11_person_id = $_POST['person_id'];
+	  $g11_gender = $_POST['gender'];
+	  $g11_address = $_POST['address'];
+	  $g11_district = $_POST['district'];
+	  $g11_city = $_POST['city'];
+	  $g11_country = $_POST['country'];
+	  $g11_nationality = $_POST['nationality'];
+	  $g11_c = mysqli_multi_query($g11_con, "update register set firstname = '$g11_firstname', lastname = '$g11_lastname', phone = '$g11_phone', birthday = '$g11_birthday', person_id = '$g11_person_id', gender = '$g11_gender', address = '$g11_address', district = '$g11_district', city = '$g11_city', country = '$g11_country', nationality = '$g11_nationality' where account_no = '$g11_account_no';");
+	  if($g11_c) {header("refresh:0;url=profile.php"); } else { echo "no";}
+	}
+}
+else {
+	$message = "You do not have access to this page.";
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	header("refresh:0;url=../login/login.php");
 }
 ?>
 <!DOCTYPE html>
