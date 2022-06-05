@@ -3,19 +3,19 @@
 
 <head>
   <title>UIT Bank</title>
-    <link rel="icon" href="../asset/img/logo-uit.png" type="image/x-icon">
+    <link rel="icon" href="./asset/img/logo-uit.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../css/response.css">
+  <link rel="stylesheet" href="./css/response.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
   <div id="header">
     <div class="header-content">
-      <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
+      <a href="./index.html" class="page-logo"><img src="./asset/img/banner_0.png" height="60"></a>
       <div class="direct-container">
-        <a href="../register/register.php" class="direct-link"><i class="fa fa-fw fa-sign-in "></i>Sign Up</a>
+        <a href="/register/register.php" class="direct-link"><i class="fa fa-fw fa-sign-in "></i>Sign Up</a>
       </div>
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -26,18 +26,18 @@
   <div class="login form-body">
     <div class="login grid-column form-background">
       <div>
-        <img src="../asset/img/Logo_UIT_Web_Transparent.png" alt="" height="400">
+        <img src="./asset/img/Logo_UIT_Web_Transparent.png" alt="" height="400">
       </div>
     </div>
 
     <div class="grid-column form-container login">
       <div class="login form-content">
         <div class="login form-title">
-          <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
+          <img src="./asset/img/logo-uit.png" alt="" width="30" height="30">
           <h2>UIT Bank</h2>
         </div>
 
-        <form action="../db/login.php" method="post" class="login form-section" onsubmit="return checkAll()">
+        <form action="./db/login.php" method="post" class="login form-section" onsubmit="return checkAll()">
           <div class="login input-container">
             <!-- <input type="text" name="id" class="question" id="id" placeholder="User ID" required autocomplete="off" /> -->
             <input type="text" name="id" oninput="checkEmail()" placeholder="User ID" class="question" id="id" required
