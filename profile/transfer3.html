@@ -3,11 +3,12 @@
 
 <head>
     <title>UIT Bank</title>
-    <link rel="icon" href="./asset/img/logo-uit.png" type="image/x-icon">
+    <link rel="icon" href="../asset/img/logo-uit.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/response.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/response.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../asset/themify-icon/themify-icons/themify-icons.css">
     <script>
         var filter_account = /^[0-9]{10}$/;
         function myFunction() {
@@ -46,6 +47,29 @@
                 return false;
             }
         }
+
+        const modalBtn = document.getElementById("call-modal")
+        const modalContainer = document.getElementById("js-modal-container")
+        function showModal() {
+            const modalContent = document.getElementById("js-modal")
+            modalContent.classList.add('open')
+        }
+
+        function RemoveModal() {
+            const modalContent = document.getElementById("js-modal")
+            modalContent.classList.remove('open')
+        }
+
+        function showAlert() {
+            alert("hello")
+        }
+        modalContainer.addEventListener('click', function (event) {
+            event.stopPropagation()
+        })
+        // modalBtn.addEventListener('click', alert("alo"))
+        modalContent.addEventListener('click', RemoveModal())
+
+
     </script>
 </head>
 
@@ -54,7 +78,7 @@
         <div class="header-content">
             <div class="home-direct">
                 <a href="">
-                    <img src="./asset/img/banner_0.png" alt="" height="60">
+                    <img src="../asset/img/banner_0.png" alt="" height="60">
                 </a>
             </div>
             <div class="direct-container">
@@ -67,63 +91,108 @@
             <div class="direct-container">
                 <a class="direct-link " href="logout.php"><i class="fa fa-fw fa-sign-out "></i>Logout</a>
             </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <a href="javascript:void(0);" class="icon" onclick="">
                 <i class="fa fa-bars"></i>
             </a>
         </div>
     </div>
 
 
-    <div class="transfer2 form-body">
-        <div class="transfer2 arrow-container">
-            <div class="transfer2 cover">
-                <div class="transfer2 sender infor-container">
-                    <div class="sender content">
-                        <h3>Châu Khắc Đạt</h3>
-                        <h4>1000.000 VNĐ</h4>
-                    </div>
-                </div>
-                <div class="transfer2 receiver infor-container">
-                    <div class="receiver content">
-                        <h3>Châu Khắc Đạt</h3>
-                        <h4>1234567890</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="transfer2 transfer form-content">
-            <div class="register2 user-profile form-title">
-                <img src="./asset/img/logo-uit.png" alt="" width="30" height="30">
-                <h2>UIT Bank</h2>
+    <div class="tranfer2 transfer transfer3-body">
+        <div class="transfer3-content">
+            <div class="tranfer2 tranfer transfer3-header">
+                <h2>Transaction Confirmation</h2>
             </div>
 
             <form method="POST" onsubmit="" action="" class="form-section transfer2">
                 <div class="tab inner-form transfer2 transfer">
                     <div class="transfer2 first transfer inner-block input-account">
-                        <div class="transfer2 block-item block-column user-account">
-                            <input type="text" name="amount" placeholder=" " oninput="checkAccount()"
-                                class="transfer2 transfer question" id="amount" required autocomplete="off" />
-                            <label for="amount"><span>Amount</span></label>
+                        <div class="transfer2 block-item block-column amount-unit transfer3">
+                            <span class="transfer2 transfer unit">Debit account</span>
                         </div>
-                        <div class="transfer2 block-item block-column amount-unit">
-                            <span class="transfer2 transfer unit">VND</span>
+                        <div class="transfer2 block-item block-column user-account transfer3">
+                            <input type="text" name="amount" value="QƯERTYUIOPASD" readonly="readonly"
+                                class="transfer2 transfer question transfer3" id="debit-account" required
+                                autocomplete="off" />
                         </div>
-                    </div>
-                    
-                    <div class="transfer2 transfer second inner-block input-account">
-                        <div class="transfer2 block-item block-column user-account">
-                            <input type="text" min="1" max="250" name="remark" oninput=""
-                                class="transfer2 transfer question remark" value="Chau Khac Dat chuyen tien" id="remark" required autocomplete="off" />
-                            <label for="remark"><span>Transaction remark</span></label>
-                        </div>
-                        
                     </div>
 
-                    <div class="transfer2 block-item block-column next-btn">
-                        <input type="submit" value="Next" name="Next"
-                            class="transfer2 transfer input-next-btn input-btn" id="Next">
+                    <div class="transfer2 first transfer inner-block input-account">
+                        <div class="transfer2 block-item block-column amount-unit transfer3">
+                            <span class="transfer2 transfer unit">Beneficiary account</span>
+                        </div>
+                        <div class="transfer2 block-item block-column user-account transfer3">
+                            <input type="text" name="amount" value="QƯERTYUIOPASD" readonly="readonly"
+                                class="transfer2 transfer question transfer3" id="amount" required autocomplete="off" />
+                        </div>
                     </div>
+
+
+                    <div class="transfer2 first transfer inner-block input-account">
+                        <div class="transfer2 block-item block-column amount-unit transfer3">
+                            <span class="transfer2 transfer unit">Beneficiary name</span>
+                        </div>
+                        <div class="transfer2 block-item block-column user-account transfer3">
+                            <input type="text" name="amount" value="QƯERTYUIOPASD" readonly="readonly"
+                                class="transfer2 transfer question transfer3" id="amount" required autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="transfer2 first transfer inner-block input-account">
+                        <div class="transfer2 block-item block-column amount-unit transfer3">
+                            <span class="transfer2 transfer unit">Amount</span>
+                        </div>
+                        <div class="transfer2 block-item block-column user-account transfer3">
+                            <input type="text" name="amount" value="QƯERTYUIOPASD" readonly="readonly"
+                                class="transfer2 transfer question transfer3" id="amount" required autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="transfer2 first transfer inner-block input-account">
+                        <div class="transfer2 block-item block-column amount-unit transfer3">
+                            <span class="transfer2 transfer unit">Transaction date</span>
+                        </div>
+                        <div class="transfer2 block-item block-column user-account transfer3">
+                            <input type="text" name="amount" value="QƯERTYUIOPASD" readonly="readonly"
+                                class="transfer2 transfer question transfer3" id="amount" required autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="transfer2 first transfer inner-block input-account">
+                        <div class="transfer2 block-item block-column amount-unit transfer3">
+                            <span class="transfer2 transfer unit">Content</span>
+                        </div>
+                        <div class="transfer2 block-item block-column user-account transfer3">
+                            <input type="text" name="amount" value="QƯERTYUIOPASD" readonly="readonly"
+                                class="transfer2 transfer question transfer3" id="amount" required autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="modal-content" id="js-modal">
+                        <div class="modal-container" id="js-modal-container">
+                            <div class="tranfer2 tranfer transfer3-header">
+                                <div class="close-button">  
+                                    <button onclick="RemoveModal()"><i class="ti ti ti-close"></i></button>
+                                </div>
+                                <h2>VERIFY</h2>
+                            </div>
+                            <div class="modal input-container">
+                                <div class="modal transfer2 transfer inner-block input-account">
+                                    <div class="modal transfer2 block-item block-column user-account">
+                                        <input type="text" placeholder="Enter OTP code here" name="otp"
+                                            class="transfer2 transfer question transfer3" id="otp" required
+                                            autocomplete="off" />
+                                    </div>
+                                </div>
+                                <input type="submit" value="SUBMIT" class="modal-submit-btn">
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="button" id="call-modal" onclick="showModal()" value="CONFIRM"
+                        class="transfer3 transfer transfer3-submit">
                 </div>
+
             </form>
         </div>
     </div>

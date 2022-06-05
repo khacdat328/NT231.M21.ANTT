@@ -9,10 +9,12 @@ html {
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;
   overflow-x: hidden;
+  /* overflow-y: ; */
 }
 
 body {
   height: 100%;
+  /* overflow: scroll; */
 }
 
 input,
@@ -34,17 +36,25 @@ input:not(:placeholder-shown):not(:focus) + label > span {
 #header {
   height: 60px;
   width: 100%;
-  border-bottom: 1px solid #4ba4d1;
+
+  position: relative;
 }
 
 #header .header-content {
+  position: fixed;
+  background-color: white;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
+  z-index: 10;
   margin: auto;
   /* max-width: 800px; */
   padding: 0 15px;
   height: 60px;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #4ba4d1;
 }
 
 .direct-container {
@@ -731,8 +741,7 @@ input[type="button"].question:valid {
   color: #fff;
 }
 
-
-.transfer2.form-content{
+.transfer2.form-content {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -757,7 +766,7 @@ input[type="button"].question:valid {
   /* margin-top: 10px; */
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  /* align-items: baseline; */
   height: 100px;
   overflow: hidden;
 }
@@ -783,8 +792,8 @@ input[type="button"].question:valid {
   /* background: rgb(21, 165, 180); */
   background: linear-gradient(
     90deg,
-    rgba(0,102,173,1) 0%,
-    rgba(0,190,174,1) 60%
+    rgba(0, 102, 173, 1) 0%,
+    rgba(0, 190, 174, 1) 60%
   );
 }
 
@@ -797,8 +806,8 @@ input[type="button"].question:valid {
   z-index: 0;
   background: linear-gradient(
     90deg,
-    rgba(0,190,174,1) 50%,
-    rgba(0,102,173,1) 100%
+    rgba(0, 190, 174, 1) 50%,
+    rgba(0, 102, 173, 1) 100%
   );
 }
 
@@ -834,18 +843,16 @@ input[type="button"].question:valid {
   /* background: rgb(21, 165, 180); */
   background: linear-gradient(
     45deg,
-    rgba(0,190,174,1) 60%,
+    rgba(0, 190, 174, 1) 60%,
     rgba(33, 199, 184, 1) 100%
   );
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
 }
 
-
-
-.transfer2.sender::before {
+/* .transfer2.sender::before {
   position: absolute;
-  /* top: 200px; */
-  /* left: -30px; */
+  top: 200px;
+  left: -30px;
   content: "";
   width: 100px;
   height: 0;
@@ -856,8 +863,8 @@ input[type="button"].question:valid {
   border-radius: 10px;
   z-index: 0;
   right: -40px;
-  /* border: 50px solid blue; */
-}
+  border: 50px solid blue;
+} */
 
 .transfer2.receiver::after {
   left: -50px;
@@ -869,67 +876,200 @@ input[type="button"].question:valid {
   z-index: -1;
 }
 
-.transfer2.form-content{
+.transfer2.form-content {
   margin: 10px 0;
 }
 
-.transfer2.amount-unit{
+.transfer2.amount-unit {
   margin-top: 10px;
 }
-.transfer2.unit{
+.transfer2.unit {
   font-size: 16px;
   font-weight: 700;
-  color:#4ba4d1;
-  margin:0;
- 
+  color: #4ba4d1;
+  margin: 0;
 }
 
-.transfer2.remark{
+.transfer2.remark {
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.transfer2.first{
-  margin-bottom: 30px;
+.transfer2.first {
+  margin-bottom: 15px;
 }
 
-.modal-body {
-  display: none;
+.transfer3-body {
+  z-index: 0;
+
+  display: block;
   justify-content: center;
-  position: fixed;
-  top: 100px;
+  position: absolute;
+  top: 60px;
   right: 0;
   left: 0;
+  bottom: 0;
+  background: rgb(67, 173, 227);
+  background: linear-gradient(
+    45deg,
+    rgba(67, 173, 227, 1) 0%,
+    rgba(60, 148, 181, 0.6250875350140056) 55%,
+    rgba(34, 47, 185, 1) 100%
+  );
   /* bottom: 0; */
 }
 
-.modal-body.open{
+.transfer3-body.open {
   display: flex;
-  
 }
 
-.modal-content{
-  background-color: white;
-  position: relative;
-  animation: modalFadeIn ease 0.6s;
+.transfer3-content {
+  /* padding: 10px; */
+  margin: 15px auto;
+  background-color: whitesmoke;
+  width: 60%;
+  max-width: 700px;
+  min-width: 300px;
+  border-radius: 10px;
+  /* position: relative; */
+  border: 1px solid white;
+  /* animation: transfer3FadeIn ease 0.6s; */
 }
-.modal.amount-unit{
-  flex:1;
+
+.transfer3-header {
+  text-align: center;
+  padding: 5px 0 10px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 700;
+  /* background-color: red; */
+  border-radius: 10px 10px 0 0;
+  background: rgb(67, 173, 227);
+  background: linear-gradient(
+    225deg,
+    rgba(67, 173, 227, 1) 0%,
+    rgba(60, 148, 181, 0.6250875350140056) 55%,
+    rgb(50, 60, 172) 100%
+  );
+}
+.transfer3.amount-unit {
+  flex: 1;
   text-align: start;
 }
 
-.modal.user-account input{
-  flex:2;
+.transfer3.user-account {
+  flex: 2;
   text-align: end;
 }
 
-@keyframes modalFadeIn {
+.transfer3.user-account input {
+  text-align: end;
+}
+
+.transfer3-submit {
+  margin: 10px auto 0;
+  font-size: 20px;
+  padding: 5px 40px;
+  border-radius: 15px;
+  color: white;
+  background: rgb(105, 151, 214);
+  background: linear-gradient(
+    90deg,
+    rgba(105, 151, 214, 1) 0%,
+    rgba(105, 209, 233, 1) 61%
+  );
+}
+
+.transfer3-submit:hover{
+  cursor: pointer;
+}
+
+.transfer3 input:focus {
+  padding-top: 0;
+}
+
+.modal-content{
+  display: none;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  background: rgb(105, 151, 214);
+  background: linear-gradient(
+    90deg,
+    rgba(105, 151, 214, 1) 0%,
+    rgba(105, 209, 233, 1) 61%
+  );
+  left: 0;
+  right: 0;
+  /* top: 100px; */
+  z-index: 100;
+  /* animation: transfer3FadeIn ease 1s; */
+}
+
+.modal-content.open{
+  display: flex;
+}
+.modal-container{
+  padding: 20px 20px;
+  margin-bottom: 100px ;
+  border-radius: 10px;
+  width: 400px;
+  animation: transfer3FadeIn ease 1s;
+  /* background-color: green; */
+}
+.modal.input-account{
+  position: relative;
+  height: fit-content;
+  padding: 10px 10px 0;
+}
+
+.modal.user-account input:focus{
+  padding-top: 5px;
+}
+
+.modal-submit-btn{
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  background-color: #4ba4d1;
+  border-radius: 10px;
+}
+
+.modal.input-container{
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  padding: 0 5px 5px;
+}
+
+#js-modal-container .close-button{
+  width: 100%;
+  padding: 0 5px;
+  display: flex;
+  justify-content: end;
+}
+
+.modal input.question:focus,
+.modal input.question:valid{
+  padding-top: 5px;
+}
+.close-button button{
+  background-color: transparent;
+  border: none;
+}
+.close-button button:hover{
+  cursor: pointer;
+}
+@keyframes transfer3FadeIn {
   from {
-      opacity: 0;
-      transform: translateY(-140px);
-  }
-  to {
-      opacity: 1  ;
-      transform: translateY(0);
-  }
+    opacity: 0;
+    transform: translateY(-140px);
+}
+to {
+    opacity: 1  ;
+    transform: translateY(0);
+}
 }
