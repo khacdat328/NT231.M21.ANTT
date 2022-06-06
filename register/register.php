@@ -109,29 +109,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return true;
       }
     }
-    /*
-    function next(){
-    	if( validate() && checkfName() && checklName() && checkEmail())
-    	{
-    		return true;
-    	}
-    	else{
-    	    return header("refresh:0;url=register.php");
-    	  }
-    	}*/
   </script>
 </head>
 
 <body>
-  <!-- <div class="topnav" id="myTopnav">
-    <img src="../img/lg.png" height="44" width="204.8">
-    <a href="../index.html" class="active"><i class="fa fa-fw fa-home "></i>Home</a>
-    <a href="../login/login.html" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Login</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div> -->
-
   <div id="header">
     <div class="header-content">
       <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
@@ -189,7 +170,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </form>
     </div>
   </div>
-
 </body>
 
 </html>

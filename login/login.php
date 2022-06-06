@@ -1,3 +1,56 @@
+<?php
+if(isset($_SESSION['account_no'])){
+	header("refresh:0;url=../profile/dashboard.php");
+}
+else{
+	$g11_con = mysqli_connect("localhost","root","root","bank");
+	if (isset($_GET['verification'])) {
+        if (mysqli_num_rows(mysqli_query($g11_con, "SELECT * FROM register WHERE token='{$_GET['verification']}'")) > 0) {
+            $query = mysqli_query($g11_con, "UPDATE register SET token='', status='1' WHERE token='{$_GET['verification']}'");
+            
+            if ($query) {
+                echo"<script>alert('Account verification has been successfully completed.')</script>";
+                header("refresh:0;url=../login.php");
+                
+            }
+        } else {
+            header("refresh:0;url=../login.php");
+        }
+    }
+}
+if (isset($_POST['submit'])) {
+  $g11_con = mysqli_connect("localhost","root","root","bank");
+	$g11_id = $_POST['id'];
+	$g11_password = $_POST['password'];
+	$g11_secretSalt = "g11.uit.nt213.m21.antt";
+	$g11_message = $g11_secretSalt.$g11_id;
+	$g11_hashed = md5($g11_message);
+	$g11_encryptionMethod = "AES-256-CBC"; 
+
+	//To encrypt
+	$g11_crypt = openssl_encrypt($g11_hashed, $g11_encryptionMethod, $g11_password);
+	session_start();
+	$g11_result = mysqli_query($g11_con, "SELECT * FROM login WHERE id='$g11_id' && pwd='$g11_crypt'");
+  $g11_result2 = mysqli_query($g11_con,"SELECT * FROM register WHERE email='$g11_id'");
+	$g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+  $g11_row2 = mysqli_fetch_array($g11_result2,MYSQLI_ASSOC);
+	$g11_accno = $g11_row['account_no'];
+	$g11_count = mysqli_num_rows($g11_result);
+	if($g11_count==1)
+	{
+    if (empty($g11_row2['token']) && $g11_row2['status'] == 1 ) {
+      $_SESSION['account_no'] = $g11_accno;
+      header("refresh:0;url=../profile/dashboard.php");
+    } else {
+        echo"<script>alert('First verify your account and try again.')</script>";
+    }
+	}
+	else
+	{
+		header("refresh:0;url=../login/login.php");
+	}
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -37,7 +90,7 @@
           <h2>UIT Bank</h2>
         </div>
 
-        <form action="../db/login.php" method="post" class="login form-section" onsubmit="return checkAll()">
+        <form method="post" class="login form-section" onsubmit="return checkAll()">
           <div class="login input-container">
             <!-- <input type="text" name="id" class="question" id="id" placeholder="User ID" required autocomplete="off" /> -->
             <input type="text" name="id" oninput="checkEmail()" placeholder="User ID" class="question" id="id" required

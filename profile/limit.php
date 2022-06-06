@@ -1,7 +1,7 @@
 <?php
 session_start();
 $g11_account_no = $_SESSION['account_no'];
-$g11_con = mysqli_connect("localhost","root","12345678","bank");
+$g11_con = mysqli_connect("localhost","root","root","bank");
 $g11_result = mysqli_query($g11_con, "SELECT * FROM balance WHERE account_no = '$g11_account_no'");
 $g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
 $g11_online_limit = $g11_row['online_limit'];

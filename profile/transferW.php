@@ -1,36 +1,43 @@
 <?php
 session_start();
-$g11_account_nom = $_SESSION['account_no'];
-$g11_con = mysqli_connect("localhost","root","12345678","bank");
-$g11_connection = mysqli_connect("localhost","root","12345678","transactions");
-$g11_resultm = mysqli_query($g11_con, "SELECT * FROM balance WHERE account_no = '$g11_account_nom'");
-$g11_rowm = mysqli_fetch_array($g11_resultm,MYSQLI_ASSOC);
-$g11_my_balance = $g11_rowm['balance'];
-$g11_online_limit = $g11_rowm['online_limit'];
-$g11_online_no = $g11_rowm['online_no'];
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-  $g11_account_noo = $_POST['account_noo'];
-  $g11_amount = $_POST['amount'];
-  $g11_resulto = mysqli_query($g11_con, "SELECT * FROM balance WHERE account_no = '$g11_account_noo'");
-  $g11_count = mysqli_num_rows($g11_resulto);
-  if($g11_count==1)
-  {
-    $g11_rowo = mysqli_fetch_array($g11_resulto,MYSQLI_ASSOC);
-    $g11_other_balance = $g11_rowo['balance'];
-    $g11_my_balance = $g11_my_balance - $g11_amount;
-    $g11_other_balance = $g11_other_balance + $g11_amount;
-    $g11_online_limit = $g11_online_limit - $g11_amount;
-    $g11_online_no = $g11_online_no - 1;
-    $g11_date = date("Y-m-d");
-    $g11_remarkm = "transfer to ".$g11_account_noo;
-    $g11_remarko = "from ".$g11_account_nom;
-    $g11_c = mysqli_multi_query($g11_con, "update balance set balance = '$g11_my_balance', online_limit = '$g11_online_limit', online_no = '$g11_online_no' where account_no = '$g11_account_nom'; update balance set balance = $g11_other_balance where account_no = '$g11_account_noo';");
-    $g11_s = mysqli_multi_query($g11_connection, "INSERT INTO `$g11_account_nom` (date, remark, debit, credit, balance) VALUES('$g11_date', '$g11_remarkm', '$g11_amount', null, '$g11_my_balance'); INSERT INTO `$g11_account_noo` (date, remark, debit, credit, balance) VALUES('$g11_date', '$g11_remarko', null, '$g11_amount', '$g11_other_balance');");
-    if($g11_c && $g11_s) {header("refresh:0;url=success.html"); } else {echo "no";}
-    }
-  else {
-    header("refresh:0;url=transferW.php");
-  }
+if(isset($_SESSION['account_no'])){
+	$g11_account_nom = $_SESSION['account_no'];
+	$g11_con = mysqli_connect("localhost","root","root","bank");
+	$g11_connection = mysqli_connect("localhost","root","root","transactions");
+	$g11_resultm = mysqli_query($g11_con, "SELECT * FROM balance WHERE account_no = '$g11_account_nom'");
+	$g11_rowm = mysqli_fetch_array($g11_resultm,MYSQLI_ASSOC);
+	$g11_my_balance = $g11_rowm['balance'];
+	$g11_online_limit = $g11_rowm['online_limit'];
+	$g11_online_no = $g11_rowm['online_no'];
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+	  $g11_account_noo = $_POST['account_noo'];
+	  $g11_amount = $_POST['amount'];
+	  $g11_resulto = mysqli_query($g11_con, "SELECT * FROM balance WHERE account_no = '$g11_account_noo'");
+	  $g11_count = mysqli_num_rows($g11_resulto);
+	  if($g11_count==1)
+	  {
+	    $g11_rowo = mysqli_fetch_array($g11_resulto,MYSQLI_ASSOC);
+	    $g11_other_balance = $g11_rowo['balance'];
+	    $g11_my_balance = $g11_my_balance - $g11_amount;
+	    $g11_other_balance = $g11_other_balance + $g11_amount;
+	    $g11_online_limit = $g11_online_limit - $g11_amount;
+	    $g11_online_no = $g11_online_no - 1;
+	    $g11_date = date("Y-m-d");
+	    $g11_remarkm = "transfer to ".$g11_account_noo;
+	    $g11_remarko = "from ".$g11_account_nom;
+	    $g11_c = mysqli_multi_query($g11_con, "update balance set balance = '$g11_my_balance', online_limit = '$g11_online_limit', online_no = '$g11_online_no' where account_no = '$g11_account_nom'; update balance set balance = $g11_other_balance where account_no = '$g11_account_noo';");
+	    $g11_s = mysqli_multi_query($g11_connection, "INSERT INTO `$g11_account_nom` (date, remark, debit, credit, balance) VALUES('$g11_date', '$g11_remarkm', '$g11_amount', null, '$g11_my_balance'); INSERT INTO `$g11_account_noo` (date, remark, debit, credit, balance) VALUES('$g11_date', '$g11_remarko', null, '$g11_amount', '$g11_other_balance');");
+	    if($g11_c && $g11_s) {header("refresh:0;url=success.html"); } else {echo "no";}
+	    }
+	  else {
+	    header("refresh:0;url=transferW.php");
+	  }
+	}
+}
+else {
+	$message = "You do not have access to this page.";
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	header("refresh:0;url=../login/login.php");
 }
 ?>
 <!DOCTYPE html>

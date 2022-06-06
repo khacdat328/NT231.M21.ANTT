@@ -1,8 +1,15 @@
 <?php
 session_start();
-$g11_account_no = $_SESSION['account_no'];
-$g11_con = mysqli_connect("localhost","root","12345678","transactions");
-$g11_result = mysqli_query($g11_con, "SELECT * FROM `$g11_account_no`");
+if(isset($_SESSION['account_no'])){
+	$g11_account_no = $_SESSION['account_no'];
+	$g11_con = mysqli_connect("localhost","root","root","transactions");
+	$g11_result = mysqli_query($g11_con, "SELECT * FROM `$g11_account_no`");
+}
+else {
+	$message = "You do not have access to this page.";
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	header("refresh:0;url=../login/login.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
