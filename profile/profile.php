@@ -45,18 +45,6 @@ else {
             }
         }
     </script>
-    <style type="text/css">
-        table {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-
-        table td {
-            border: 1px solid black;
-            border-right: 1px solid white;
-            border-left: 1px solid white
-        }
-    </style>
 </head>
 
 <body>
