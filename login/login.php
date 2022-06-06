@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
           <h2>UIT Bank</h2>
         </div>
 
-        <form action="../db/login.php" method="post" class="login form-section" onsubmit="return checkAll()">
+        <form method="post" class="login form-section" onsubmit="return checkAll()">
           <div class="login input-container">
             <!-- <input type="text" name="id" class="question" id="id" placeholder="User ID" required autocomplete="off" /> -->
             <input type="text" name="id" oninput="checkEmail()" placeholder="User ID" class="question" id="id" required
