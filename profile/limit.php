@@ -29,6 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/response.css">
+<link rel="stylesheet" href="../css/style.css">
 <script>
 function myFunction() {
     var x = document.getElementById("myTopnav");
@@ -48,18 +49,28 @@ function myFunction() {
 </head>
 <body>
 
-<div class="topnav" id="myTopnav">
-  <img style="float:right; right:1" src="../img/lg.png" height="44" width="204.8">
-  <a href="dashboard.php"><i class="fa fa-fw fa-calculator "></i>Dashboard</a>
-  <a href="profile.php"><i class="fa fa-fw fa-id-card-o "></i>Profile</a>
-  <a href="transfer.php"><i class="fa fa-fw fa-cogs "></i>Transfer Money</a>
-  <a href="transactions.php"><i class="fa fa-fw fa-file-text "></i>Transactions</a>
-  <a href="limit.php" class="active"><i class="fa fa-fw fa-sliders "></i>Set Limit</a>
-  <a href="logout.php" style="float: right"><i class="fa fa-fw fa-sign-out "></i>Logout</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
+<div id="header">
+    <div class="header-content">
+      <div class="home-direct">
+        <a href="">
+          <img src="../asset/img/banner_0.png" alt="" height="60">
+        </a>
+      </div>
+      <div class="direct-container">
+        <a class="direct-link" href="dashboard.php"><i class="fa fa-fw fa-calculator "></i>Dashboard</a>
+        <a class="direct-link" href="profile.php" class="active"><i class="fa fa-fw fa-id-card-o "></i>Profile</a>
+        <a class="direct-link" href="transfer.php"><i class="fa fa-fw fa-cogs "></i>Transfer</a>
+        <a class="direct-link" href="transactions.php"><i class="fa fa-fw fa-file-text "></i>Transactions</a>
+        <a class="direct-link" href="limit.php"><i class="fa fa-fw fa-sliders "></i>Set Limit</a>
+      </div>
+      <div class="direct-container">
+        <a class="direct-link " href="logout.php" style="float: right"><i class="fa fa-fw fa-sign-out "></i>Logout</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
 <br><br>
 <center>
   <div style="background-color: #4CAF50; height: 45px; width: 100%; color: white; "><h1>Set Limit</h1></div>

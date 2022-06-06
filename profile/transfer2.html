@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UIT Bank</title>
+    <link rel="icon" href="../asset/img/logo-uit.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/response.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+        var filter_account = /^[0-9]{10}$/;
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        function validate() {
+            var v = document.getElementById("amount").value;
+            if (isNaN(v)) {
+                document.getElementById("msg").innerHTML = "Should be a Number";
+            }
+            else {
+                document.getElementById("msg").innerHTML = "";
+            }
+        }
+        function checkAccount() {
+            var account = document.getElementById("amount").value;
+            if (!filter_account.test(account)) {
+                document.getElementById("amount").setCustomValidity("Invalid account number!");
+                document.getElementById("amount").reportValidity();
+                return false;
+            }
+            else {
+                document.getElementById("amount").setCustomValidity("")
+                return true;
+            }
+        }
+        function checkAll() {
+            if (checkAccount() && validate()) { return true; }
+            else {
+                alert("Please enter all information correctly!");
+                return false;
+            }
+        }
+
+        // const modal = document.querySelector('.modal-body')
+        // const NextBtn = document.querySelector('#Next')
+        // const modelContent = document.querySelector('.modal-content')
+        // function showBuyTicket () {
+        //     modal.classList.add('open')
+        // }
+
+        // function RemoveBuyTicket () {
+        //     modal.classList.remove('open')
+        // }
+        // // NextBtn.addEventListener("click",showBuyTicket)
+        // modal.addEventListener('click', RemoveBuyTicket)
+
+        // modelContainer.addEventListener('click', function(event) {
+        //     event.stopPropagation()
+        // })
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <div class="header-content">
+            <div class="home-direct">
+                <a href="">
+                    <img src="../asset/img/banner_0.png" alt="" height="60">
+                </a>
+            </div>
+            <div class="direct-container">
+                <a class="direct-link" href="dashboard.php"><i class="fa fa-fw fa-calculator "></i>Dashboard</a>
+                <a class="direct-link" href="profile.php" class="active"><i
+                        class="fa fa-fw fa-id-card-o "></i>Profile</a>
+                <a class="direct-link" href="transfer.php"><i class="fa fa-fw fa-cogs "></i>Transfer</a>
+                <a class="direct-link" href="transactions.php"><i class="fa fa-fw fa-file-text "></i>Transactions</a>
+            </div>
+            <div class="direct-container">
+                <a class="direct-link " href="logout.php"><i class="fa fa-fw fa-sign-out "></i>Logout</a>
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="transfer2 form-body">
+        <div class="transfer2 arrow-container">
+            <div class="transfer2 cover">
+                <div class="transfer2 sender infor-container">
+                    <div class="sender content">
+                        <!-- <h3>Châu Khắc Đạt</h3>
+                        <h4>1234567890</h4> -->
+                    </div>
+                </div>
+                <div class="transfer2 receiver infor-container">
+                    <div class="receiver content">
+                        <h3>Châu Khắc Đạt</h3>
+                        <h4>1234567890</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="transfer2 transfer form-content">
+            <div class="register2 user-profile form-title">
+                <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
+                <h2>UIT Bank</h2>
+            </div>
+
+            <form method="POST" onsubmit="" action="" class="form-section transfer2">
+                <div class="tab inner-form transfer2 transfer">
+                    <div class="transfer2 first transfer inner-block input-account">
+                        <div class="transfer2 block-item block-column user-account">
+                            <input type="text" name="amount" placeholder=" " oninput="checkAccount()"
+                                class="transfer2 transfer question" id="amount" required autocomplete="off" />
+                            <label for="amount"><span>Amount</span></label>
+                        </div>
+                        <div class="transfer2 block-item block-column amount-unit">
+                            <span class="transfer2 transfer unit">VND</span>
+                        </div>
+                    </div>
+
+
+                    <!-- Echo vào cái value -->
+                    <div class="transfer2 transfer second inner-block input-account">
+                        <div class="transfer2 block-item block-column user-account">
+                            <input type="text" min="1" max="250" name="remark" oninput=""
+                                class="transfer2 transfer question remark" value="Chau Khac Dat chuyen tien" id="remark"
+                                required autocomplete="off" />
+                            <label for="remark"><span>Transaction remark</span></label>
+                        </div>
+
+                    </div>
+
+                    <div class="transfer2 block-item block-column next-btn">
+                        <input type="submit" value="Next" name="Next"
+                            class="transfer2 transfer input-next-btn input-btn" id="Next">
+                    </div>
+                </div>
+
+            </form>
+
+            
+        </div>
+
+        
+    </div>
+
+
+</body>
+
+</html>

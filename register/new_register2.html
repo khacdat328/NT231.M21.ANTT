@@ -2,8 +2,8 @@
 <html>
 
 <head>
-  <title>Singhal Bank</title>
-  <link rel="icon" href="../img/l.png" type="image/x-icon">
+  <title>UIT Bank</title>
+  <link rel="icon" href="../asset/img/logo-uit.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/response.css">
@@ -12,188 +12,238 @@
 </head>
 
 <body>
+  <div id="header">
+    <div class="header-content">
+      <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
+      <div class="direct-container">
 
-  <div class="topnav" id="myTopnav">
-    <img src="../img/lg.png" height="44" width="204.8">
-    <a href="../index.html" class="active"><i class="fa fa-fw fa-home "></i>Home</a>
-    <a href="../login/login.html" style="float: right"><i class="fa fa-fw fa-sign-in "></i>Login</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-    </a>
+        <a href="../login/login.html" class="direct-link"><i class="fa fa-fw fa-sign-in "></i>LOGIN</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
   </div>
 
-  <div class="register2 form-body">
-    <div class="register2 form-content">
-      <div class="register2 form-title">
-        <img src="https://tuyensinh.uit.edu.vn/intro/images/uit.png" alt="" width="30" height="30">
+  <div class="register2 user-profile form-body">
+    <div class="register2 user-profile form-content">
+      <div class="register2 user-profile form-title">
+        <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
         <h2>UIT Bank</h2>
       </div>
-      <form class="register2 form-section" action="" method="POST">
+
+      <form class="register2 user-profile form-section" action="../db/register.php" method="post" onsubmit="return checkAll()">
         <fieldset>
           <legend>Register</legend>
-
-          <div class="register2 inner-form first-block">
-            <select class="question" id="acc_type" name="acc_type" required autocomplete="off">
-              <option selected disabled>Your Account Type</option>
-              <option value="saving">Saving Account</option>
-              <option value="current">Currrent Account</option>
-            </select>
+          <div class="register2 user-profile inner-form first-block">
+            <div class="register2 user-profile block-item">
+              <select class="question" id="acc_type" name="acc_type" required autocomplete="off">
+                <option selected disabled>Your Account Type</option>
+                <option value="saving">Saving Account</option>
+                <option value="current">Currrent Account</option>
+              </select>
+              <label for="acc_type"></label>
+            </div>
           </div>
 
 
-          <div class="register2 inner-form second-block">
-            <div class="register2 first inner-block">
-              <input type="text" name="phone" class="question" id="phone" required autocomplete="off" />
-              <label for="phone"><span>Mobile Number*</span></label>
-            </div>
-
-            <div class="register2 second inner-block">
-              <div class="register2 block-column">
-                <input type="date" name="DoB" class="question" id="DoB" required autocomplete="off" />
-                <label for="DoB"><span>Date of birth*</span></label>
+          <div class="register2 user-profile personal-in4 inner-form second-block">
+            <div class="register2 user-profile first inner-block">
+              <div class="register2 user-profile block-item block-column">
+                <input type="text" name="person_id" oninput="checkPid()" class="question" id="person_id" required
+                  autocomplete="off" />
+                <label for="person_id"><span>Personal ID</span></label>
               </div>
 
-              <div class="register2 block-column">
-                <select name="gender" id="gender" class=" gender  question" required autocomplete="off">
-                  <option selected disabled>Choose your gender</option>
-                  <option value="">Male</option>
-                  <option value="">Female</option>
-                  <option value="">Others</option>
+              <div class="register2 user-profile block-item block-column">
+                <input type="text" name="phone" oninput="checkPhone()" class="question" id="phone" required
+                  autocomplete="off" />
+                <label for="phone"><span>Mobile Number*</span></label>
+              </div>
+            </div>
+
+            <div class="register2 user-profile second inner-block">
+              <div class="register2 user-profile block-item block-column">
+                <input type="date" name="birthday" class="question" id="birthday" min="1920-01-01" max="2004-12-31" required
+                  autocomplete="off" />
+                <label for="birthday"><span>Date of birth*</span></label>
+              </div>
+
+              <div class="register2 user-profile block-item block-column">
+                <select name="gender" id="gender" class="gender  question" required autocomplete="off">
+                  <option value="" selected disabled>Choose your gender</option>
+                  <option value="1">Male</option>
+                  <option value="2">Female</option>
+                  <option value="3">Others</option>
                 </select>
+                <label class="gender-label" for="gender"><span>Gender</span></label>
               </div>
             </div>
           </div>
 
-          <div class="register2 inner-form third-block">
-            <div class="register2 inner-block"></div>
-            <div class="register2 inner-block"></div>
+          <div class="register2 user-profile inner-form">
+            <div class="register2 user-profile block-item">
+              <input type="text" name="address" oninput="checkAddr()" class="question" id="address" required
+                autocomplete="off" />
+              <label for="address"><span>Address*</span></label>
+       
+            </div>
+
+            <div class="register2 user-profile inner-block">
+              <div class="register2 user-profile block-item block-column">
+                <input type="text" name="district" oninput="checkDistrict()" class="question" id="district" required
+                  autocomplete="off" />
+                <label for="district"><span>District*</span></label>
+             
+              </div>
+
+              <div class="register2 user-profile block-item block-column">
+                <input type="text" name="city" oninput="checkCity()" class="question" id="city" required
+                  autocomplete="off" />
+                <label for="city"><span>City*</span></label>
+          
+              </div>
+            </div>
+
+            <div class="register2 user-profile inner-block">
+              <div class="register2 user-profile block-item block-column">
+                <input type="text" name="country" oninput="checkCountry()" class="question" id="country" required
+                  autocomplete="off" />
+                <label for="country"><span>Country*</span></label>
+              </div>
+              <div class="register2 user-profile block-item block-column">
+                <input type="text" name="nationality" oninput="checkNationality()" class="question" id="nationality"
+                  required autocomplete="off" />
+                <label for="nationality"><span>Nationality*</span></label>
+              </div>
+            </div>
           </div>
 
+          <input class="register2 user-profile form-submit" type="submit" name="submit" value="REGISTER">
 
-          <input type="text" name="address2" class="question" id="address2" required autocomplete="off" />
-          <label for="address2">
-            <span>Address Line 2*</span></label>
-
-
-          <input type="text" name="city" class="question" id="city" required autocomplete="off" />
-          <label for="city"><span>City*</span></label>
-
-          <input type="text" name="state" class="question" id="state" required autocomplete="off" />
-          <label for="state"><span>State*</span></label>
-
-          <input type="text" name="country" class="question" id="country" required autocomplete="off" />
-          <label for="country"><span>Country*</span></label>
-
-
-          <input type="text" name="father" class="question" id="father" required autocomplete="off" />
-          <label for="father"><span>Father's Name*</span></label>
-
-          <input type="text" name="mother" class="question" id="mother" required autocomplete="off" />
-          <label for="mother"><span>Mother's Name*</span></label>
-
-          <input type="text" name="nationality" class="question" id="nationality" required autocomplete="off" />
-          <label for="nationality"><span>Nationality*</span></label>
-
-
-          <input type="submit" name="submit" value="REGISTER ME"
-            style="height: 45px; width: 250px; font-size: 25px; color: white; background-color: #4CAF50">
         </fieldset>
       </form>
     </div>
   </div>
-  <!-- <center>
-    <div style="background-color: #4CAF50; height: 80px; width: 100%; align-items: center; color: white ">
-      <h1>Registration : Step 2</h1>
-      <p>* All Field are Mandatory</p>
-    </div>
-    <br>
-    <hr class="colorgraph">
-    <form action="../db/register.php" method="post">
-      <table width="80%" cellspacing="8">
-        <col width="400">
-        <col width="400">
-        <tr>
-          <td>
-            <input type="text" name="phone" class="question" id="phone" required autocomplete="off" />
-            <label for="phone"><span>Mobile Number*</span></label>
-          </td>
-          <td>
-            <select class="question" id="acc_type" name="acc_type" required autocomplete="off">
-              <option value="saving">Saving Account</option>
-              <option value="current">Currrent Account</option>
-            </select>
-            <label for="acc_type"><span>Account Type*</span></label>
-          </td>
-        </tr>
-      </table>
-      <table width="80%" cellspacing="8">
-        <tr>
-          <td>
-            <input type="text" name="address1" class="question" id="address1" required autocomplete="off" />
-            <label for="address1"><span>Address Line 1*</span></label>
-          </td>
-        </tr>
-      </table>
-      <table width="80%" cellspacing="8">
-        <tr>
-          <td>
-            <input type="text" name="address2" class="question" id="address2" required autocomplete="off" />
-            <label for="address2">
-              <span>Address Line 2*</span></label>
-          </td>
-        </tr>
-      </table>
-      <table width="80%" cellspacing="8">
-        <tr>
-          <td>
-            <input type="text" name="city" class="question" id="city" required autocomplete="off" />
-            <label for="city"><span>City*</span></label>
-          </td>
-          <td>
-            <input type="text" name="state" class="question" id="state" required autocomplete="off" />
-            <label for="state"><span>State*</span></label>
-          </td>
-          <td>
-            <input type="text" name="country" class="question" id="country" required autocomplete="off" />
-            <label for="country"><span>Country*</span></label>
-          </td>
-        </tr>
-      </table>
-      <table width="80%" cellspacing="8">
-        <tr>
-          <td>
-            <input type="text" name="father" class="question" id="father" required autocomplete="off" />
-            <label for="father"><span>Father's Name*</span></label>
-          </td>
-          <td>
-            <input type="text" name="mother" class="question" id="mother" required autocomplete="off" />
-            <label for="mother"><span>Mother's Name*</span></label>
-          </td>
-          <td>
-            <input type="text" name="nationality" class="question" id="nationality" required autocomplete="off" />
-            <label for="nationality"><span>Nationality*</span></label>
-          </td>
-        </tr>
-      </table>
-      <hr class="colorgraph">
-      <table width="80%">
-        <tr>
-          <td align="center">
-            <input type="submit" name="submit" value="REGISTER ME"
-              style="height: 45px; width: 250px; font-size: 25px; color: white; background-color: #4CAF50">
-          </td>
-        </tr>
-      </table>
-    </form>
-  </center> -->
-
   <script>
+    var filter_phone = /^[0-9]{10}$/;
+    var filter_bday = /^(?:0[1-9]|[12]\d|3[01])([\/.-])(?:0[1-9]|1[012])\1(?:19|20)\d\d$/;
+    var filter_pid = /^[0-9]{9}$|^[0-9]{12}$/;
+    var filter_var = /^[A-Za-z\s]+$/;
+    var filter_addr = /^[[A-Za-z\d\s,./]+$/;
+
     function myFunction() {
       var x = document.getElementById("myTopnav");
       if (x.className === "topnav") {
         x.className += " responsive";
       } else {
         x.className = "topnav";
+      }
+    }
+
+    function checkAll() {
+      if (checkPhone() && checkPid() && checkAddr() && checkDistrict() && checkCity() && checkCountry() && checkNationality()) {
+        alert("Congratulations, you have successfully registered an account!");
+        return true;
+      } else {
+        alert("Please enter all information correctly!");
+        return false;
+      }
+    }
+
+    function checkPhone() {
+      var phone = document.getElementById("phone").value;
+      var get_phoneNumber = document.getElementById("phone")
+      if (!filter_phone.test(phone)) {
+        get_phoneNumber.setCustomValidity("Invalid mobile phone!");
+        get_phoneNumber.reportValidity();
+        return false;
+      } else {
+        get_phoneNumber.setCustomValidity("");
+        return true;
+
+      }
+    }
+
+    function checkPid() {
+      var pid = document.getElementById("person_id").value;
+      var get_pid = document.getElementById("person_id")
+      if (!filter_pid.test(pid)) {
+        get_pid.setCustomValidity("Invalid personal ID!");
+        get_pid.reportValidity();
+        return false;
+      } else {
+        get_pid.setCustomValidity("");
+        return true;
+
+      }
+    }
+
+    function checkAddr() {
+      var addr = document.getElementById("address").value;
+      var get_addr = document.getElementById("address")
+      if (!filter_addr.test(addr)) {
+        get_addr.setCustomValidity("Invalid address!");
+        get_addr.reportValidity();
+        return false;
+      } else {
+        get_addr.setCustomValidity("");
+        return true;
+
+      }
+    }
+
+    function checkDistrict() {
+      var district = document.getElementById("district").value;
+      var get_district = document.getElementById("district")
+      if (!filter_var.test(district)) {
+        get_district.setCustomValidity("Invalid input!");
+        get_district.reportValidity();
+        return false;
+      } else {
+        get_district.setCustomValidity("");
+        return true;
+
+      }
+    }
+
+    function checkCity() {
+      var city = document.getElementById("city").value;
+      var get_city = document.getElementById("city")
+      if (!filter_var.test(city)) {
+        get_city.setCustomValidity("Invalid input!");
+        get_city.reportValidity();
+        return false;
+      } else {
+        get_city.setCustomValidity("");
+        return true;
+      }
+    }
+
+    function checkCountry() {
+      var country = document.getElementById("country").value;
+      get_country = document.getElementById("country")
+      if (!filter_var.test(country)) {
+        get_country.setCustomValidity("Invalid input!");
+        get_country.reportValidity();
+        return false;
+      } else {
+        get_country.setCustomValidity("");
+        return true;
+      }
+    }
+
+    function checkNationality() {
+      var nationality = document.getElementById("nationality").value;
+      var get_nationality = document.getElementById("nationality")
+      if (!filter_var.test(nationality)) {
+        get_nationality.setCustomValidity("Invalid input!");
+        get_nationality.reportValidity();
+        return false;
+      } else {
+        get_nationality.setCustomValidity("");
+        return true;
+
       }
     }
   </script>
