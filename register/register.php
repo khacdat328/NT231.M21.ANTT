@@ -109,7 +109,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return true;
       }
     }
-
   </script>
 </head>
 
@@ -172,7 +171,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </form>
     </div>
   </div>
-
 </body>
 
 </html>
