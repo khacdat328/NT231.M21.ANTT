@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/response.css">
   <link rel="stylesheet" href="../css/style.css">
-  <script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type=text/javascript>
+    
     var filter_account = /^[0-9]{10}$/;
     function myFunction() {
       var x = document.getElementById("myTopnav");
@@ -39,6 +41,20 @@
         return true;
       }
     }
+    
+    function checkExist() {
+    	var exist = document.getElementsByTagName("h3").textContent;
+    	if (exist === "") {
+    		alert("Please press Check to check account existing or not");
+    		return false;
+    	}
+    	if (exist === "Account does not exist!") {
+    		alert("Please enter information correctly!");
+    		return false;
+    	}
+    	return true;
+    }
+    
     function checkAll() {
       if (checkAccount() && validate()) { return true; }
       else {
@@ -46,6 +62,22 @@
         return false;
       }
     }
+    
+    $(document).ready(function(){
+    	$("#findName").click(function(){
+    		var account_num = $("#account_noo").val();
+    		$.ajax({
+    			url: "check.php",
+    			type: "POST",
+    			data: {account_num: account_num},
+    			dataType: "text",
+    			success: function(data){
+    				$("h3").html(data);
+    			}
+    		});
+    	});
+   });
+   	
   </script>
 </head>
 
@@ -78,8 +110,11 @@
         <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
         <h2>UIT Bank</h2>
       </div>
+<!-- begin -->
 
-      <form method="POST" onsubmit ="return checkAll()" action="" class="form-section transfer1">
+<!-- end -->
+
+      <form method="POST" action="transfer2.php" onsubmit ="return checkExist()" class="form-section transfer1" id="check">
         <div class="tab inner-form transfer1 transfer">
           <div class="transfer1 transfer inner-block input-account">
             <div class="transfer1 block-item block-column user-account">
@@ -87,15 +122,18 @@
                 id="account_noo" required autocomplete="off" />
               <label for="account_noo"><span>Account Number</span></label>
             </div>
-            <div class="transfer1block-item block-column">
-              <input type="button" value="Check" name="findName" class="transfer1 transfer input-btn" id="findName" />
+            
+            <!-- CHECK -->
+            <div class="transfer1 block-item block-column">
+              <input type="button" value="Check" name="findName" class="transfer1 transfer input-btn" id="findName">
             </div>
           </div>
 
+          <!-- Display ten tài khoản nhận tiền -->
           <div class="transfer1 block-item block-column account-name">
-            <h3 class="account-name-display">CHAU KHAC DAT</h3>
+            <h3 class="account-name-display"></h3>
           </div>
-
+          <!-- NEXT -->
           <div class="transfer1 block-item block-column next-btn">
             <input type="submit" value="Next" name="Next" class="transfer1 transfer input-next-btn input-btn" id="Next">
           </div>
@@ -105,5 +143,5 @@
     </div>
   </div>
 </body>
-
 </html>
+

@@ -9,14 +9,19 @@ if (isset($_POST['sendOTP']))
 {
 	
 	$g11_otp = rand(100000, 999999);
-	$_SESSION['otp'] = $g11_otp;
 	$g11_debit_account = $_SESSION['account_no'];
-	$g11_conn = mysqli_connect("localhost","nhom11","Thanh@19522235","bank2");
-	$g11_result = mysqli_query($g11_conn, "SELECT * FROM register WHERE account_no = '$g11_debit_account'");
-	$g11_row = mysqli_fetch_array($g11_result_sender_2,MYSQLI_ASSOC);
+	$g11_conn = mysqli_connect("localhost","root","root","bank");
+	$g11_result = mysqli_query($g11_conn, "SELECT account_no FROM register WHERE account_no='$g11_debit_account'");
+	$g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+        $g11_count = mysqli_num_rows($g11_result);
 	$g11_email = $g11_row["email"];
-	$mail = new PHPMailer(true);
-
+	require '../vendor/autoload.php';
+	if ($g11_count > 0) {
+        $query = mysqli_query($g11_connection, "UPDATE register SET token='{$g11_otp}' WHERE email='{$g11_email}'");
+	if ($query) {   
+		echo "<div style='display: none;'>";
+            //Create an instance; passing `true` enables exceptions
+            $mail = new PHPMailer(true);
           try {
               //Server settings
               $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -30,7 +35,7 @@ if (isset($_POST['sendOTP']))
 
               //Recipients
               $mail->setFrom('19520223@gm.uit.edu.vn');
-              $mail->addAddress('19522235@gm.uit.edu.vn');
+              $mail->addAddress($g11_email);
 
               //Content
               $mail->isHTML(true);                                  //Set email format to HTML
@@ -39,13 +44,14 @@ if (isset($_POST['sendOTP']))
 
               $mail->send();
               }
-            catch(Exception $e) {
-                return;
-            }  
-	echo "OTP da duoc gui den gmail cua ban";
+             catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
+            echo "</div>";        
+            echo "<script> alert(We've send a verification link on your email address.)</script>";
+        }
+    } else {
+        $msg = "<div class='alert alert-danger'>$g11_email - This email address do not found.</div>";
+    }
 }
-else
-{
-	echo "fail";
-} 
 ?>

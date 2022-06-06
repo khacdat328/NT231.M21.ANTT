@@ -3,7 +3,7 @@ session_start();
 $g11_debit_account = $_SESSION['account_no'];
 $g11_beneficiary_account = $_SESSION['receiver_account_no'];
 unset($_SESSION['receiver_account_no']);
-$g11_conn = mysqli_connect("localhost","nhom11","Thanh@19522235","bank2");
+$g11_conn = mysqli_connect("localhost","root","root","bank");
 $g11_stmt = mysqli_prepare($g11_conn, "SELECT * FROM register WHERE account_no = ?");
 mysqli_stmt_bind_param($g11_stmt, "s", $g11_beneficiary_account);
 mysqli_execute($g11_stmt);

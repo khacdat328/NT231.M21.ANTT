@@ -13,7 +13,7 @@ if (isset($_POST['otp']))
 		$g11_amount = $_POST['amount'];
 		$g11_transaction_date = $_POST['transaction_date'];
 		$g11_content = $_POST['content'];
-		$g11_conn = mysqli_connect("localhost","nhom11","Thanh@19522235","bank2"); 
+		$g11_conn = mysqli_connect("localhost","root","root","bank"); 
 		$g11_result_sender = mysqli_query($g11_conn, "SELECT * FROM balance WHERE account_no = '$g11_debit_account'");
 		$g11_result_receiver = mysqli_query($g11_conn, "SELECT * FROM balance WHERE account_no = '$g11_beneficiary'");
 		$g11_sender_row = mysqli_fetch_array($g11_result_sender,MYSQLI_ASSOC);

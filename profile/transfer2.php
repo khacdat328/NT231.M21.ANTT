@@ -1,7 +1,7 @@
 <?php
 session_start();
 $g11_account_num_sender = $_SESSION['account_no'];
-$g11_conn = mysqli_connect("localhost","nhom11","Thanh@19522235","bank2");
+$g11_conn = mysqli_connect("localhost","root","root","bank");
 
 //prepare statement
 $g11_stmt = mysqli_prepare($g11_conn, "SELECT * FROM balance WHERE account_no = ?");
