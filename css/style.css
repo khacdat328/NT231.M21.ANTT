@@ -32,6 +32,7 @@ input:not(:placeholder-shown):not(:focus) + label > span {
   top: -58px;
   font-size: 13px;
   color: rgb(136, 132, 132);
+
 }
 
 input.question:not(:placeholder-shown):not(:focus){
