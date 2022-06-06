@@ -1063,6 +1063,61 @@ input[type="button"].question:valid {
 .close-button button:hover{
   cursor: pointer;
 }
+
+.receipt-container{
+  padding:10px;
+  margin: 100px auto;
+  background-color: white;
+  width: 90%;
+  border-radius: 10px;
+  border: 4px solid #598acf;
+  max-width: 450px;
+}
+
+.receipt-content{
+  display: flex;
+  font-size: 15px;
+  justify-content: center ;
+}
+
+.receipt .title,
+.receipt .icon{
+  color: #4ba4d1;
+
+}
+.receipt.detail1{
+  flex: content;
+  text-align: start;
+}
+
+.detail1 .receipt.unit{
+  font-weight: 500;
+  /* color: aliceblue; */
+}
+
+.receipt.detail2{
+  font-weight: 600;
+  flex: content;
+  text-align: end;
+}
+
+.detail2 .receipt.unit{
+  font-weight: 700;
+  color: #598acf;
+}
+
+.new-btn button{
+  background-color: #56baed;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+.new-btn a{
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+}
+
 @keyframes transfer3FadeIn {
   from {
     opacity: 0;
