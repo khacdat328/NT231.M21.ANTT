@@ -112,7 +112,7 @@ if (isset($_POST['submit'])) {
                         <h2>Forgot Password</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
                         <?php echo $msg; ?>
-                        <form action="" method="post">
+                        <form action="" method="post" onsubmit ="return checkAll()">
                             <input type="email" class="email" name="email" placeholder="Enter Your Email" required>
                             <button name="submit" class="btn" type="submit">Send Reset Link</button>
                         </form>
