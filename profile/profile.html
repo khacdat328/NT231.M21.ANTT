@@ -1,3 +1,30 @@
+<!-- <?php
+session_start();
+if(isset($_SESSION['account_no'])){
+	$g11_account_no = $_SESSION['account_no'];
+	$g11_con = mysqli_connect("localhost","root","root","bank");
+	$g11_result = mysqli_query($g11_con, "SELECT * FROM register WHERE account_no = '$g11_account_no'");
+	$g11_row = mysqli_fetch_array($g11_result,MYSQLI_ASSOC);
+	$g11_firstname = $g11_row['firstname'];
+	$g11_lastname = $g11_row['lastname'];
+	$g11_email = $g11_row['email'];
+	$g11_phone = $g11_row['phone'];
+	$g11_gender = $g11_row['gender'];
+	$g11_district = $g11_row['district'];
+	$g11_birthday = $g11_row['birthday'];
+	$g11_person_id = $g11_row['person_id'];
+	$g11_gender = $g11_row['gender'];
+	$g11_address = $g11_row['address'];
+	$g11_city = $g11_row['city'];
+	$g11_country = $g11_row['country'];
+	$g11_nationality = $g11_row['nationality'];
+}
+else {
+	$message = "You do not have access to this page.";
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	header("refresh:0;url=../login/login.php");
+}
+?> -->
 <!DOCTYPE html>
 <html>
 
@@ -47,8 +74,7 @@
                         class="fa fa-fw fa-id-card-o "></i>Profile</a>
                 <a class="direct-link" href="transfer.php"><i class="fa fa-fw fa-cogs "></i>Transfer</a>
                 <a class="direct-link" href="transactions.php"><i class="fa fa-fw fa-file-text "></i>Transactions</a>
-                <a class="direct-link" href="limit.php"><i class="fa fa-fw fa-sliders "></i>Set Limit</a>
-            </div>
+                </div>
             <div class="direct-container">
                 <a class="direct-link " href="logout.php"><i class="fa fa-fw fa-sign-out "></i>Logout</a>
             </div>
@@ -60,14 +86,14 @@
     <div class="profile user-profile form-body">
         <div class="form-content profile user-profile">
             <div class="profile user-profile form-title">
-                <img src="./asset/img/logo-uit.png" alt="" width="30" height="30">
+                <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
                 <h2>UIT Bank</h2>
             </div>
 
             <div class="profile user-profile profile-content">
                 <div class="profile user-profile profile-column basical-profile">
                     <div class="avatar personal-profile">
-                        <img src="./asset/img/logo-uit.png" alt="">
+                        <img src="../asset/img/logo-uit.png" alt="">
                     </div>
                     <div class="personal-profile">
                         <!-- <h2><?php echo $g11_firstname . " " . $g11_lastname ?></h2> -->
@@ -81,49 +107,49 @@
                     <div class="profile profile-container  personal-in4">
                         <div class="profile user-profile inner-form">
                             <div class="profile user-profile profile-display">
-                                <p> Account Number: 12345678 </p>
-                                <!-- <p> <?php echo $g11_account_no ?> </p> -->
+                                <!-- <p> Account Number: 12345678 </p> -->
+                                <p>Account Number: <?php echo $g11_account_no ?> </p>
                             </div>
                             <div class="profile user-profile profile-display">
 
-                                <p>Phone number: 0123456789</p>
-                                <!-- <p></p> -->
+                                <!-- <p>Phone number: 0123456789</p> -->
+                                <p>Phone number: <?php echo $g11_phone ?></p>
                             </div>
                             <div class="profile user-profile profile-display">
-                                <p>Personal ID: 1234589</p>
-                                <!-- <p><?php echo $g11_person_id ?></p> -->
+                                <!-- <p>Personal ID: 1234589</p> -->
+                                <p>Personal ID:<?php echo $g11_person_id ?></p>
                             </div>
                             <div class="profile user-profile profile-display">
-                                <p>Date of birth: 01/01/1999</p>
-                                <!-- <p><?php echo $g11_birthday ?></p> -->
+                                <!-- <p>Date of birth: 01/01/1999</p> -->
+                                <p>Date of birth:<?php echo $g11_birthday ?></p>
                             </div>
                             <div class="profile user-profile profile-display">
-                                <p>Gender: Male</p>
-                                <!-- <p><?php echo $g11_gender ?></p> -->
+                                <!-- <p>Gender: Male</p> -->
+                                <p>Gender: <?php echo $g11_gender ?></p>
                             </div>
                         </div>
                     </div>
                     <div class="profile profile-container address-in4">
                         <div class="profile user-profile inner-form">
                             <div class="profile user-profile profile-display">
-                                <p>Address: 09 xxxxxxx, Dĩ An, Bình Dương </p>
-                                <!-- <p><?php echo $g11_address ?></p> -->
+                                <!-- <p>Address: 09 xxxxxxx, Dĩ An, Bình Dương </p> -->
+                                <p>Address: <?php echo $g11_address ?></p>
                             </div>
                             <div class="profile user-profile profile-display">
-                                <p>District: Lorem ipsum</p>
-                                <!-- <p><?php echo $g11_district ?></p> -->
+                                <!-- <p>District: Lorem ipsum</p> -->
+                                <p>District: <?php echo $g11_district ?></p>
                             </div>
                             <div class="profile user-profile profile-display">
-                                <p>City: Lorem, ipsum dolor.</p>
-                                <!-- <p><?php echo $g11_city ?></p> -->
+                                <!-- <p>City: Lorem, ipsum dolor.</p> -->
+                                <p>City: <?php echo $g11_city ?></p>
                             </div>
                             <div class="profile user-profile profile-display">
-                                <p>Country: Lorem, ipsum.</p>
-                                <!-- <p><?php echo $g11_country ?></p> -->
+                                <!-- <p>Country: Lorem, ipsum.</p> -->
+                                <p>Country<?php echo $g11_country ?></p>
                             </div>
                             <div class="profile user-profile profile-display">
-                                <p>Nationality: Lorem, ipsum.</p>
-                                <!-- <p><?php echo $g11_nationality ?></p> -->
+                                <!-- <p>Nationality: Lorem, ipsum.</p> -->
+                                <p>Nationality: <?php echo $g11_nationality ?></p>
                             </div>
                         </div>
                     </div>
@@ -132,8 +158,9 @@
             </div>
 
             <div class="profile user-profile modify-btn">
-                <input type="button" name="changepwd" value="CHANGE PASSWORD" onclick="window.location.href='./password/password.php'">
-                <input type="button" name="editprofile" value="EDIT PROFILE" onclick="window.location.href='editprofile.php'">
+                <!-- <a href="./editprofile.html"></a> -->
+                <input type="button" name="changepwd" value="CHANGE PASSWORD" onclick="window.location.href='../profile/change-pwd.php'">
+                <input type="button" name="editprofile" value="EDIT PROFILE" onclick="window.location.href='./editprofile.html'">
             </div>
         </div>
     </div>
