@@ -113,7 +113,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-
   <div id="header">
     <div class="header-content">
       <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
