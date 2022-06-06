@@ -543,18 +543,21 @@ select.question + label > span {
 .profile .avatar {
   /* width: 80px;
    */
-  width: fit-content;
+  width: 80px;
   height: 80px;
-  /* border: 1px solid red; */
-  /* border-radius: 50%; */
-  align-items: center;
+  border: 1px solid grey;
+  align-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+  /* align-items: center; */
+  /* text-align: center; */
 }
 
 .profile .avatar img {
-  vertical-align: middle;
-  border: 1px solid gray;
+  vertical-align:middle;
+  /* border: 1px solid gray; */
   /* width: 100%; */
-  margin: auto 0;
+  margin: auto;
   height: 100%;
   border-radius: 50%;
 }
@@ -566,7 +569,8 @@ select.question + label > span {
 .profile-display {
   padding: 5px 10px;
   margin: 5px 0;
-  border: 1px solid black;
+  border-radius: 5px;
+  border: 1.5px solid rgb(194, 193, 193);
 }
 .profile-display p {
   text-align: start;
