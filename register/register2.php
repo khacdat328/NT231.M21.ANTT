@@ -259,7 +259,7 @@
         <h2>UIT Bank</h2>
       </div>
 
-      <form class="register2 user-profile form-section" action="../db/register.php" method="post" onsubmit="return checkAll()">
+      <form class="register2 user-profile form-section" method="post" onsubmit="return checkAll()">
         <fieldset>
           <legend>Register</legend>
           <div class="register2 user-profile inner-form first-block">
