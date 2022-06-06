@@ -41,33 +41,38 @@
       <form class="register1 form-section" action="" method="POST">
         <fieldset>
           <legend>Register</legend>
-          <input type="text" name="firstname" class="question" oninput="checkfName()" id="firstname" required autocomplete="off">
+          <input type="text" name="firstname" placeholder=" " class="question" oninput="checkfName()" id="firstname" required
+            autocomplete="off">
           <label style="margin-bottom: 10px;" for="firstname"><span>First Name*</span></label>
-          <div style="font-size:12px; text-align: end; color: red; height: 18px;" id="msgName1"></div>
 
-          <input type="text" name="lastname"  class="question" oninput="checklName()" id="lastname" required autocomplete="off">
+          <input type="text" name="lastname" class="question" placeholder=" " oninput="checklName()" id="lastname" required
+            autocomplete="off">
           <label style="margin-bottom: 10px;" for="lastname"><span>Last Name*</span></label>
           <div style="color: red;" id="msgName2"></div>
 
 
-          <input type="text" name="email" class="question" oninput="checkEmail()" id="email" required autocomplete="off">
+          <input type="text" name="email" class="question" placeholder=" " oninput="checkEmail()" id="email" required
+            autocomplete="off">
           <label style="margin-bottom: 10px;" for="email"><span>Email Address*</span></label>
           <div style="color: red;" id="msgEmail"></div>
 
-          <input type="password" name="password" oninput="checkPwd()" class="question" id="password" required autocomplete="off">
+          <input type="password" name="password" oninput="checkPwd()" placeholder=" " class="question" id="password" required
+            autocomplete="off">
           <label style="margin-bottom: 10px;" for="password">
             <span>Password*</span>
           </label>
           <div style="color: red;" id="msgPwd"></div>
 
-          <input id="password_confirmation" class="question" type="password" oninput="validate()" name="password_confirmation" required autocomplete="off">
+          <input id="password_confirmation" class="question" type="password" placeholder=" " oninput="validate()"
+            name="password_confirmation" required autocomplete="off">
           <label style="margin-bottom: 10px;" for="password_confirmation">
             <span>Confirm Password*</span>
           </label>
           <div style="color: red;" id="msg"></div>
 
           <input class="register1 form-submit" id="register1-submit" type="submit" name="submit" value="Submit">
-          <a class="register1 login-link" href="../login/login.html" onmouseover="this.style.color = 'red'" onmouseleave="this.style.color = 'blue'">
+          <a class="register1 login-link" href="../login/login.html" onmouseover="this.style.color = 'red'"
+            onmouseleave="this.style.color = 'blue'">
             Already had an account?
           </a>
         </fieldset>
@@ -114,11 +119,11 @@
     function checkfName() {
       var fname = document.getElementById("firstname").value;
       if (!filter_name.test(fname)) {
-        document.getElementById("msgName1").innerHTML = "Username must have alphabet characters only";
-        document.getElementById("firstname").setAttribute('title','Alphabet character only')
+        document.getElementById("firstname").setCustomValidity("Username must have alphabet characters only");
+        document.getElementById("firstname").reportValidity()
         return false;
       } else {
-        document.getElementById("msgName1").innerHTML = "";
+        document.getElementById("firstname").setCustomValidity("");
         return true;
 
       }
@@ -127,10 +132,11 @@
     function checklName() {
       var lname = document.getElementById("lastname").value;
       if (!filter_name.test(lname)) {
-        document.getElementById("msgName2").innerHTML = "Username must have alphabet characters only";
+        document.getElementById("lastname").setCustomValidity("Username must have alphabet characters only");
+        document.getElementById("lastname").reportValidity()
         return false;
       } else {
-        document.getElementById("msgName2").innerHTML = "";
+        document.getElementById("lastname").setCustomValidity("");
         return true;
       }
     }

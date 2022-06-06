@@ -33,6 +33,10 @@ input:not(:placeholder-shown):not(:focus) + label > span {
   font-size: 13px;
   color: rgb(136, 132, 132);
 }
+
+input.question:not(:placeholder-shown):not(:focus){
+padding-top: 20px;
+}
 #header {
   height: 60px;
   width: 100%;
