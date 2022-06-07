@@ -83,8 +83,9 @@ else {
                 <img src="../asset/img/logo-uit.png" alt="" width="30" height="30">
                 <h2>UIT Bank</h2>
             </div>
+			fo
             <form class="edit-profile user-profile form-section"  method="POST" onsubmit=" return checkAll()"
-                action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]);?>
+                action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]);?>">
                 <fieldset>
                     <legend>Edit your profile</legend>
                     <div class="edit-profile user-profile inner-block">

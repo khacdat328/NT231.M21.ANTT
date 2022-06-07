@@ -1,3 +1,4 @@
+/* 10:42 */
 * {
   padding: 0;
   margin: 0;
@@ -498,7 +499,7 @@ select.question + label > span {
   font-size: 20px;
   top: -38px;
   left: 0px;
-  z-index: -1;
+  /* z-index: -1; */
   -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
   transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
 }
@@ -984,7 +985,7 @@ input[type="button"].question:valid {
   );
 }
 
-.transfer3-submit:hover{
+.transfer3-submit:hover {
   cursor: pointer;
 }
 
@@ -992,7 +993,7 @@ input[type="button"].question:valid {
   padding-top: 0;
 }
 
-.modal-content{
+.modal-content {
   display: none;
   position: absolute;
   justify-content: center;
@@ -1012,28 +1013,28 @@ input[type="button"].question:valid {
   /* animation: transfer3FadeIn ease 1s; */
 }
 
-.modal-content.open{
+.modal-content.open {
   display: flex;
 }
-.modal-container{
+.modal-container {
   padding: 20px 20px;
-  margin-bottom: 100px ;
+  margin-bottom: 100px;
   border-radius: 10px;
   width: 400px;
   animation: transfer3FadeIn ease 1s;
   /* background-color: green; */
 }
-.modal.input-account{
+.modal.input-account {
   position: relative;
   height: fit-content;
   padding: 10px 10px 0;
 }
 
-.modal.user-account input:focus{
+.modal.user-account input:focus {
   padding-top: 5px;
 }
 
-.modal-submit-btn{
+.modal-submit-btn {
   margin: 10px auto;
   padding: 10px;
   font-size: 20px;
@@ -1043,13 +1044,13 @@ input[type="button"].question:valid {
   border-radius: 10px;
 }
 
-.modal.input-container{
+.modal.input-container {
   background-color: white;
   border-radius: 0 0 10px 10px;
   padding: 0 5px 5px;
 }
 
-#js-modal-container .close-button{
+#js-modal-container .close-button {
   width: 100%;
   padding: 0 5px;
   display: flex;
@@ -1057,19 +1058,19 @@ input[type="button"].question:valid {
 }
 
 .modal input.question:focus,
-.modal input.question:valid{
+.modal input.question:valid {
   padding-top: 5px;
 }
-.close-button button{
+.close-button button {
   background-color: transparent;
   border: none;
 }
-.close-button button:hover{
+.close-button button:hover {
   cursor: pointer;
 }
 
-.receipt-container{
-  padding:10px;
+.receipt-container {
+  padding: 10px;
   margin: 100px auto;
   background-color: white;
   width: 90%;
@@ -1078,45 +1079,44 @@ input[type="button"].question:valid {
   max-width: 450px;
 }
 
-.receipt-content{
+.receipt-content {
   display: flex;
   font-size: 15px;
-  justify-content: center ;
+  justify-content: center;
 }
 
 .receipt .title,
-.receipt .icon{
+.receipt .icon {
   color: #4ba4d1;
-
 }
-.receipt.detail1{
+.receipt.detail1 {
   flex: content;
   text-align: start;
 }
 
-.detail1 .receipt.unit{
+.detail1 .receipt.unit {
   font-weight: 500;
   /* color: aliceblue; */
 }
 
-.receipt.detail2{
+.receipt.detail2 {
   font-weight: 600;
   flex: content;
   text-align: end;
 }
 
-.detail2 .receipt.unit{
+.detail2 .receipt.unit {
   font-weight: 700;
   color: #598acf;
 }
 
-.new-btn button{
+.new-btn button {
   background-color: #56baed;
   border: none;
   padding: 10px;
   border-radius: 10px;
 }
-.new-btn a{
+.new-btn a {
   text-transform: uppercase;
   text-decoration: none;
   color: white;
@@ -1126,9 +1126,258 @@ input[type="button"].question:valid {
   from {
     opacity: 0;
     transform: translateY(-140px);
-}
-to {
-    opacity: 1  ;
+  }
+  to {
+    opacity: 1;
     transform: translateY(0);
+  }
 }
+
+.change-pw-container{
+  height: 100%;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  background: rgb(67, 173, 227);
+  background: linear-gradient(
+    45deg,
+    rgba(67, 173, 227, 1) 0%,
+    rgba(60, 148, 181, 0.6250875350140056) 55%,
+    rgba(34, 47, 185, 1) 100%
+  );
 }
+
+.changePw-content{
+  margin-top: 100px;
+  width: 70%;
+  max-width: 700px;
+  /* background-color: #333; */
+}
+.changePW-section{
+  text-align: center;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+.changePW-section h2.title{
+  text-align: center;
+  /* display: block; */
+  padding: 5px 10px 20px;
+}
+
+.changePW-innerSection{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.changePW-form{
+  /* flex: 1; */
+}
+.changePW-form span{
+
+}
+
+
+input.pw{
+  font-size: 20px;
+  border: 1px solid #4ba4d1;
+  border-radius: 10px;
+  /* width: 100%; */
+}
+
+.PW-condition{
+  text-align: start;
+  padding-left: 5px;
+}
+.PW-condition ul{
+  padding-left: 5px;
+}
+.PW-condition ul li{
+  padding: 2px 0;
+}
+.PW-condition .condition-title{
+  display: block;
+  padding: 0 5px;
+}
+.pw-conditional{
+  font-size: 16px;
+  margin:0;
+  display: flex;
+  justify-content: start;
+}
+
+.changePW-form button{
+  padding: 10px 15px;
+  font-weight: 600;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  background: rgb(67, 173, 227);
+  background: linear-gradient(
+    45deg,
+    rgba(67, 173, 227, 1) 0%,
+    rgba(60, 148, 181, 0.6250875350140056) 55%,
+    rgb(74, 86, 218) 100%
+  );
+}
+
+.changePW-form button:hover{
+  cursor: pointer;
+  background: white;
+  color: #4ba4d1;
+  border: 1px solid rgb(67, 173, 227);
+}
+
+.recover-pw.transfer3-content{
+  padding: 10px 20px;
+  margin-top: 140px;
+  width: 70%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.recover-pw.transfer3-content form h3,
+.recover-pw.transfer3-content form p{
+  text-align: start;
+}
+
+.recover-pw input.question{
+  margin-top  : 5px;
+  border: 1px solid #56baed;
+}
+
+.recover-pw input.question:not(:placeholder-shown):not(:focus),
+.recover-pw input.question:focus{
+  padding-top: 5px;
+}
+.recover-pw .submit-btn{
+  margin: 5px auto;
+  font-weight: 600;
+  background: #4ba4d1;
+}
+
+.recover-pw .submit-btn:hover{
+  color: #4ba4d1;
+  background-color: white;
+  border: 1px solid #4ba4d1;
+}
+
+.success-body{
+  background-color: white;
+  width: fit-content;
+  margin: 100px auto;
+  padding: 30px;
+  border-radius: 10px;
+  opacity: 0.7;
+}
+
+#dashBoardContent{
+  height: 100%;
+  /* background-color: #56baed; */
+  display: flex;
+  justify-content: center;
+  background: rgb(67, 173, 227);
+  background: linear-gradient(
+    45deg,
+    rgba(67, 173, 227, 1) 0%,
+    rgba(60, 148, 181, 0.6250875350140056) 55%,
+    rgba(34, 47, 185, 1) 100%
+  );
+  /* background-repeat: no-repeat; */
+  /* background-size:; */
+  /* background-image: url(https://tuyensinh.uit.edu.vn/sites/default/files/uploads/files/dai-hoc-uit-3.jpg); */
+}
+
+.dashboard-container{
+  width: 80%;
+  max-width: 800px;
+
+}
+.dashboard-content {
+ 
+  margin-top: 100px;
+  width: 100%;
+  
+  /* background-color: #4ba4d1; */
+  border: 1px solid white;
+  border-radius: 10px;
+  background: rgb(67, 173, 227);
+  background: linear-gradient(
+    45deg,
+    rgba(67, 173, 227, 1) 0%,
+    rgba(60, 148, 181, 0.6250875350140056) 55%,
+    rgba(34, 47, 185, 1) 100%
+  );
+}
+
+.user-section{
+  /* margin-top: 10px; */
+  padding: 10px;
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  border-radius: 10px 10px 0 0 ;
+}
+
+.user-section h4,
+.user-section h3{
+  font-weight: 600;
+  color: rgb(114, 114, 114);
+}
+
+.user-balance .available-balance{
+  text-align: end ;
+}
+.service-section{
+ display: flex;
+ justify-content: space-evenly;
+ background-color: aliceblue;
+ border-radius: 0 0 10px 10px;
+ padding: 20px 0;
+}
+
+.service-section .service-box{
+  text-decoration: none;
+  position: relative;
+  top: 0;
+  flex: 1 1 0px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  margin: 0 20px;
+  background-color: #4ba4d1;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 700;
+  transition: top 0.2s ease;
+  background: rgb(67, 173, 227);
+  background: linear-gradient(
+    45deg,
+    rgba(67, 173, 227, 1) 0%,
+    rgba(60, 148, 181, 0.6250875350140056) 100% 
+  );
+}
+.service-box h3{
+  padding-top: 15px;
+}
+.service-section .service-icon{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.service-box:hover{
+  cursor: pointer;
+  top:-10px;
+  /* transition: top 0.2s ease; */
+}
+
+/* @keyframes movetop {
+  from {
+    top: 0;
+  }
+  to {
+   top: -10px;
+  }
+} */
