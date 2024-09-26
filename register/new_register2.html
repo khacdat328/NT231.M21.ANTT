@@ -16,6 +16,7 @@
     <div class="header-content">
       <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
       <div class="direct-container">
+
         <a href="../login/login.html" class="direct-link"><i class="fa fa-fw fa-sign-in "></i>LOGIN</a>
       </div>
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -31,8 +32,7 @@
         <h2>UIT Bank</h2>
       </div>
 
-      <form class="register2 user-profile form-section" action="../db/register.php" method="post"
-        onsubmit="return checkAll()">
+      <form class="register2 user-profile form-section" action="../db/register.php" method="post" onsubmit="return checkAll()">
         <fieldset>
           <legend>Register</legend>
           <div class="register2 user-profile inner-form first-block">
@@ -50,17 +50,15 @@
           <div class="register2 user-profile personal-in4 inner-form second-block">
             <div class="register2 user-profile first inner-block">
               <div class="register2 user-profile block-item block-column">
-                <input type="text" name="person_id" oninput="checkPid()" class="question" id="person_id" required
+                <input type="text" name="person_id" placeholder=" " oninput="checkPid()" class="question" id="person_id" required
                   autocomplete="off" />
                 <label for="person_id"><span>Personal ID</span></label>
-                <div style="color: red;" id="msgPid"></div>
               </div>
 
               <div class="register2 user-profile block-item block-column">
                 <input type="text" name="phone" oninput="checkPhone()" class="question" id="phone" required
                   autocomplete="off" />
                 <label for="phone"><span>Mobile Number*</span></label>
-                <div style="color: red;" id="msgPhone"></div>
               </div>
             </div>
 
@@ -88,7 +86,7 @@
               <input type="text" name="address" oninput="checkAddr()" class="question" id="address" required
                 autocomplete="off" />
               <label for="address"><span>Address*</span></label>
-              <div style="color: red;" id="msgAddr"></div>
+       
             </div>
 
             <div class="register2 user-profile inner-block">
@@ -96,14 +94,14 @@
                 <input type="text" name="district" oninput="checkDistrict()" class="question" id="district" required
                   autocomplete="off" />
                 <label for="district"><span>District*</span></label>
-                <div style="color: red;" id="msgDistrict"></div>
+             
               </div>
 
               <div class="register2 user-profile block-item block-column">
                 <input type="text" name="city" oninput="checkCity()" class="question" id="city" required
                   autocomplete="off" />
                 <label for="city"><span>City*</span></label>
-                <div style="color: red;" id="msgCity"></div>
+          
               </div>
             </div>
 
@@ -128,12 +126,124 @@
     </div>
   </div>
   <script>
+    var filter_phone = /^[0-9]{10}$/;
+    var filter_bday = /^(?:0[1-9]|[12]\d|3[01])([\/.-])(?:0[1-9]|1[012])\1(?:19|20)\d\d$/;
+    var filter_pid = /^[0-9]{9}$|^[0-9]{12}$/;
+    var filter_var = /^[A-Za-z\s]+$/;
+    var filter_addr = /^[[A-Za-z\d\s,./]+$/;
+
     function myFunction() {
       var x = document.getElementById("myTopnav");
       if (x.className === "topnav") {
         x.className += " responsive";
       } else {
         x.className = "topnav";
+      }
+    }
+
+    function checkAll() {
+      if (checkPhone() && checkPid() && checkAddr() && checkDistrict() && checkCity() && checkCountry() && checkNationality()) {
+        alert("Congratulations, you have successfully registered an account!");
+        return true;
+      } else {
+        alert("Please enter all information correctly!");
+        return false;
+      }
+    }
+
+    function checkPhone() {
+      var phone = document.getElementById("phone").value;
+      var get_phoneNumber = document.getElementById("phone")
+      if (!filter_phone.test(phone)) {
+        get_phoneNumber.setCustomValidity("Invalid mobile phone!");
+        get_phoneNumber.reportValidity();
+        return false;
+      } else {
+        get_phoneNumber.setCustomValidity("");
+        return true;
+
+      }
+    }
+
+    function checkPid() {
+      var pid = document.getElementById("person_id").value;
+      var get_pid = document.getElementById("person_id")
+      if (!filter_pid.test(pid)) {
+        get_pid.setCustomValidity("Invalid personal ID!");
+        get_pid.reportValidity();
+        return false;
+      } else {
+        get_pid.setCustomValidity("");
+        return true;
+
+      }
+    }
+
+    function checkAddr() {
+      var addr = document.getElementById("address").value;
+      var get_addr = document.getElementById("address")
+      if (!filter_addr.test(addr)) {
+        get_addr.setCustomValidity("Invalid address!");
+        get_addr.reportValidity();
+        return false;
+      } else {
+        get_addr.setCustomValidity("");
+        return true;
+
+      }
+    }
+
+    function checkDistrict() {
+      var district = document.getElementById("district").value;
+      var get_district = document.getElementById("district")
+      if (!filter_var.test(district)) {
+        get_district.setCustomValidity("Invalid input!");
+        get_district.reportValidity();
+        return false;
+      } else {
+        get_district.setCustomValidity("");
+        return true;
+
+      }
+    }
+
+    function checkCity() {
+      var city = document.getElementById("city").value;
+      var get_city = document.getElementById("city")
+      if (!filter_var.test(city)) {
+        get_city.setCustomValidity("Invalid input!");
+        get_city.reportValidity();
+        return false;
+      } else {
+        get_city.setCustomValidity("");
+        return true;
+      }
+    }
+
+    function checkCountry() {
+      var country = document.getElementById("country").value;
+      get_country = document.getElementById("country")
+      if (!filter_var.test(country)) {
+        get_country.setCustomValidity("Invalid input!");
+        get_country.reportValidity();
+        return false;
+      } else {
+        get_country.setCustomValidity("");
+        return true;
+      }
+    }
+
+    function checkNationality() {
+      var nationality = document.getElementById("nationality").value;
+      var get_nationality = document.getElementById("nationality")
+      if (!filter_var.test(nationality)) {
+        get_nationality.setCustomValidity("Invalid input!");
+        get_nationality.reportValidity();
+        return false;
+      } else {
+        get_nationality.setCustomValidity("");
+        return true;
+
       }
     }
   </script>

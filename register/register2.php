@@ -48,11 +48,13 @@ $_SESSION['password'] = $g11_password;
 
     function checkPhone() {
       var phone = document.getElementById("phone").value;
+      var get_phoneNumber = document.getElementById("phone")
       if (!filter_phone.test(phone)) {
-        document.getElementById("msgPhone").innerHTML = "Invalid mobile phone!";
+        get_phoneNumber.setCustomValidity("Invalid mobile phone!");
+        get_phoneNumber.reportValidity();
         return false;
       } else {
-        document.getElementById("msgPhone").innerHTML = "";
+        get_phoneNumber.setCustomValidity("");
         return true;
 
       }
@@ -60,11 +62,13 @@ $_SESSION['password'] = $g11_password;
 
     function checkPid() {
       var pid = document.getElementById("person_id").value;
+      var get_pid = document.getElementById("person_id")
       if (!filter_pid.test(pid)) {
-        document.getElementById("msgPid").innerHTML = "Invalid personal id!";
+        get_pid.setCustomValidity("Invalid personal ID!");
+        get_pid.reportValidity();
         return false;
       } else {
-        document.getElementById("msgPid").innerHTML = "";
+        get_pid.setCustomValidity("");
         return true;
 
       }
@@ -72,11 +76,13 @@ $_SESSION['password'] = $g11_password;
 
     function checkAddr() {
       var addr = document.getElementById("address").value;
+      var get_addr = document.getElementById("address")
       if (!filter_addr.test(addr)) {
-        document.getElementById("msgAddr").innerHTML = "Invalid address!";
+        get_addr.setCustomValidity("Invalid address!");
+        get_addr.reportValidity();
         return false;
       } else {
-        document.getElementById("msgAddr").innerHTML = "";
+        get_addr.setCustomValidity("");
         return true;
 
       }
@@ -84,11 +90,13 @@ $_SESSION['password'] = $g11_password;
 
     function checkDistrict() {
       var district = document.getElementById("district").value;
+      var get_district = document.getElementById("district")
       if (!filter_var.test(district)) {
-        document.getElementById("msgDistrict").innerHTML = "Invalid input";
+        get_district.setCustomValidity("Invalid input!");
+        get_district.reportValidity();
         return false;
       } else {
-        document.getElementById("msgDistrict").innerHTML = "";
+        get_district.setCustomValidity("");
         return true;
 
       }
@@ -96,35 +104,39 @@ $_SESSION['password'] = $g11_password;
 
     function checkCity() {
       var city = document.getElementById("city").value;
+      var get_city = document.getElementById("city")
       if (!filter_var.test(city)) {
-        document.getElementById("msgCity").innerHTML = "Invalid input";
+        get_city.setCustomValidity("Invalid input!");
+        get_city.reportValidity();
         return false;
       } else {
-        document.getElementById("msgCity").innerHTML = "";
+        get_city.setCustomValidity("");
         return true;
-
       }
     }
 
     function checkCountry() {
       var country = document.getElementById("country").value;
+      get_country = document.getElementById("country")
       if (!filter_var.test(country)) {
-        document.getElementById("msgCountry").innerHTML = "Invalid input";
+        get_country.setCustomValidity("Invalid input!");
+        get_country.reportValidity();
         return false;
       } else {
-        document.getElementById("msgCountry").innerHTML = "";
+        get_country.setCustomValidity("");
         return true;
-
       }
     }
 
     function checkNationality() {
       var nationality = document.getElementById("nationality").value;
+      var get_nationality = document.getElementById("nationality")
       if (!filter_var.test(nationality)) {
-        document.getElementById("msgNationality").innerHTML = "Invalid input";
+        get_nationality.setCustomValidity("Invalid input!");
+        get_nationality.reportValidity();
         return false;
       } else {
-        document.getElementById("msgNationality").innerHTML = "";
+        get_nationality.setCustomValidity("");
         return true;
 
       }
@@ -145,15 +157,6 @@ $_SESSION['password'] = $g11_password;
     </div>
   </div>
 
-  <div id="header">
-    <div class="header-content">
-      <a href="../index.html" class="page-logo"><img src="../asset/img/banner_0.png" height="60"></a>
-      <a href="../login/login.html" class="direct-link"><i class="fa fa-fw fa-sign-in "></i>Login</a>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-  </div>
 
   <div class="register2 user-profile form-body">
     <div class="register2 user-profile form-content">
@@ -182,13 +185,11 @@ $_SESSION['password'] = $g11_password;
               <div class="register2 user-profile block-item block-column">
                 <input type="text" name="person_id" oninput="checkPid()" class="question" id="person_id" required autocomplete="off" />
                 <label for="person_id"><span>Personal ID</span></label>
-                <div style="color: red;" id="msgPid"></div>
               </div>
 
               <div class="register2 user-profile block-item block-column">
                 <input type="text" name="phone" oninput="checkPhone()" class="question" id="phone" required autocomplete="off" />
                 <label for="phone"><span>Mobile Number*</span></label>
-                <div style="color: red;" id="msgPhone"></div>
               </div>
             </div>
 
@@ -214,20 +215,17 @@ $_SESSION['password'] = $g11_password;
             <div class="register2 user-profile block-item">
               <input type="text" name="address" oninput="checkAddr()" class="question" id="address" required autocomplete="off" />
               <label for="address"><span>Address*</span></label>
-              <div style="color: red;" id="msgAddr"></div>
             </div>
 
             <div class="register2 user-profile inner-block">
               <div class="register2 user-profile block-item block-column">
                 <input type="text" name="district" oninput="checkDistrict()" class="question" id="district" required autocomplete="off" />
                 <label for="district"><span>District*</span></label>
-                <div style="color: red;" id="msgDistrict"></div>
               </div>
 
               <div class="register2 user-profile block-item block-column">
                 <input type="text" name="city" oninput="checkCity()" class="question" id="city" required autocomplete="off" />
                 <label for="city"><span>City*</span></label>
-                <div style="color: red;" id="msgCity"></div>
               </div>
             </div>
 
